@@ -1,0 +1,26 @@
+@forward './grid.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-size: 16px;
+}
+
+body {
+    --bg-primary: #fff;
+    --foreground-primary: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --bg-primary: #000;
+    --foreground-primary: #fff;
+  }
+}
+
+#app {
+  background-color: var(--bg-primary);
+  color: var(--foreground-primary);
+}
