@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import AppGridSection from '@/components/AppGridSection.vue';
+import SectionExperience from '@/components/sections/SectionExperience.vue';
 import ImageSlider from '@/components/ImageSlider.vue';
 import AppText from '@/components/AppText.vue'
-import nuxtIcon from '@/components/icons/NuxtLogo.vue';
-import vueIcon from '@/components/icons/VueLogo.vue';
-import tsIcon from '@/components/icons/TsLogo.vue';
+import nuxtIcon from '@/components/icons/LogoNuxt.vue';
+import vueIcon from '@/components/icons/LogoVue.vue';
+import tsIcon from '@/components/icons/LogoTs.vue';
 
 const logos = [
     {component: nuxtIcon, alt: 'Nuxt logo', width: 110, height: 71},
@@ -34,8 +35,7 @@ const logos = [
         </AppGridSection>
         
         <AppGridSection class="grid-col-1-3 grid-row-6-10">
-            <AppText variant="h1" class="grid__title">Experience</AppText>
-
+            <SectionExperience />
         </AppGridSection>
 
         <AppGridSection class="grid-col-3-6 grid-row-6-8">
