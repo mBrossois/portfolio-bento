@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AppModeToggle from '@/components/AppModeToggle.vue';
 import AppGridSection from '@/components/AppGridSection.vue';
 import SectionExperience from '@/components/sections/SectionExperience.vue';
 import ImageSlider from '@/components/ImageSlider.vue';
@@ -17,51 +16,41 @@ const logos = [
 </script>
 
 <template>
-    <div class="relative">
-        <div class="mode-toggle">
-            <AppModeToggle />
-        </div>
-        <div class="grid">
-            <AppGridSection class="grid-col-1-3 grid-row-1-3">
-                <!-- <p class="grid__title">About me</p> -->
-                <img class="grid__me" src="@/assets/img/me_anime.png" height="150px" width="100px" alt="Me in anime style" />
-            </AppGridSection>
+    <div class="grid">
+        <AppGridSection class="grid-col-1-3 grid-row-1-3">
+            <!-- <p class="grid__title">About me</p> -->
+            <img class="grid__me" src="@/assets/img/me_anime.png" height="150px" width="100px" alt="Me in anime style" />
+        </AppGridSection>
 
-            <AppGridSection class="grid-col-3-6 grid-row-1-3">
-                <div>
-                    <AppText variant="h1" class="grid__title">Projects</AppText>
-                    <AppText variant="p" class="grid__description">From an intergrated Nuxt mocking service to a wedding website</AppText>
-                </div>
-            </AppGridSection>
-            
-            <AppGridSection class="grid-col-1-6 grid-row-3-6">
-                <AppText variant="h1" class="grid__title">Skill set</AppText>
-                <ImageSlider :images="logos" />
-            </AppGridSection>
-            
-            <AppGridSection class="grid-col-1-3 grid-row-6-10">
-                <SectionExperience />
-            </AppGridSection>
+        <AppGridSection class="grid-col-3-6 grid-row-1-3">
+            <div>
+                <AppText variant="h1" class="grid__title">Projects</AppText>
+                <AppText variant="p" class="grid__description">From an intergrated Nuxt mocking service to a wedding website</AppText>
+            </div>
+        </AppGridSection>
+        
+        <AppGridSection class="grid-col-1-6 grid-row-3-6">
+            <AppText variant="h1" class="grid__title">Skill set</AppText>
+            <ImageSlider :images="logos" />
+        </AppGridSection>
+        
+        <AppGridSection class="grid-col-1-3 grid-row-6-10">
+            <SectionExperience />
+        </AppGridSection>
 
-            <AppGridSection class="grid-col-3-6 grid-row-6-8">
-                <AppText variant="h1" class="grid__title">Insights</AppText>
+        <AppGridSection class="grid-col-3-6 grid-row-6-8">
+            <AppText variant="h1" class="grid__title">Insights</AppText>
 
-            </AppGridSection>
+        </AppGridSection>
 
-            <AppGridSection class="grid-col-3-6 grid-row-8-10">
-                <AppText variant="h1" class="grid__title">Contact me</AppText>
+        <AppGridSection class="grid-col-3-6 grid-row-8-10">
+            <AppText variant="h1" class="grid__title">Contact me</AppText>
 
-            </AppGridSection>
-        </div>
+        </AppGridSection>
     </div>
 </template>
 
 <style scoped lang="scss">
-.mode-toggle {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1rem;
-}
 .grid {
     display: grid;
     grid-template-rows: repeat(9, 3.5rem);

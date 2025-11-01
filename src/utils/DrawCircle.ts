@@ -6,6 +6,7 @@ export class DrawCircle {
     #originalY
     #currentX
     #currentY
+    #color
     radius
     startAngle
     endAngle
@@ -24,11 +25,17 @@ export class DrawCircle {
         this.startAngle = 0
         this.endAngle = 360
         this.velocityX = 0
-        this.velocityY = 0        
+        this.velocityY = 0 
+        
+        this.#color = '#ffffff'
+    }
+
+    setMode(isDarkMode: boolean) {
+        this.#color = isDarkMode ? '#ffffff' : '#000000'
     }
 
     setMouse(mouseX: number, mouseY: number) {
-        this.#mouseX = mouseX;
+        this.#mouseX = mouseX
         this.#mouseY = mouseY
     }
 
@@ -78,7 +85,7 @@ export class DrawCircle {
     }
 
     #calculateColor(opacity: string) {
-        this.#ctx.fillStyle = `#ffffff${opacity}`;
+        this.#ctx.fillStyle = `${this.#color}${opacity}`;
     }
 
     #draw(timestamp: number, moveToMouse: boolean) {
