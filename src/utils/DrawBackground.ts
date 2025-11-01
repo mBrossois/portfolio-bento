@@ -23,6 +23,14 @@ export class DrawBackground {
         this.#initialize()
     }
 
+    setMode(isDarkMode: boolean) {
+        for(let i = 0; i < this.totalAmount; i++) {
+            if(this.#listOfCircles[i]) {
+                this.#listOfCircles[i]!.setMode(isDarkMode)
+            }
+        }
+    }
+
     setMouse(x: number, y: number) {
         for(let i = 0; i < this.totalAmount; i++) {
             if(this.#listOfCircles[i]) {

@@ -8,21 +8,20 @@
     font-size: 16px;
 }
 
-body {
+.light {
     --bg-primary: #fff;
     --foreground-primary: #000;
+
+    --bg-primary-rgb: 255, 255, 255;
+    --foreground-primary-rgb: 0, 0, 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    --bg-primary: #000;
-    --foreground-primary: #fff;
-  }
-}
+.dark {
+  --bg-primary: #000;
+  --foreground-primary: #fff;
 
-#app {
-  background-color: var(--bg-primary);
-  color: var(--foreground-primary);
+    --bg-primary-rgb: 0, 0, 0;
+    --foreground-primary-rgb: 255, 255, 255;
 }
 
 .adjust-fill {

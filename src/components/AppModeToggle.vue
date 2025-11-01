@@ -1,3 +1,33 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useCookies } from '@vueuse/integrations/useCookies'
+
+const emit = defineEmits<{
+    (e: 'update', value: boolean): void
+}>()
+
+const isDarkMode = ref(false);
+
+const cookies = useCookies(['mode'])
+if(cookies.get('mode')) {
+    isDarkMode.value = cookies.get('mode') === 'dark'
+// If browser default is dark mode
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    isDarkMode.value = true
+    cookies.set('mode', 'dark')
+} else {
+    cookies.set('mode', 'light')
+}
+
+emit('update', isDarkMode.value)
+
+function toggleMode() {
+    isDarkMode.value = !isDarkMode.value
+    cookies.set('mode', isDarkMode.value ? 'dark' : 'light')
+    emit('update', isDarkMode.value)
+}
+</script>
+
 <template>
     <label @click.prevent="toggleMode" @keydown.enter="toggleMode" class="switch" tabindex="0">
         <input :value="isDarkMode" class="checkbox" type="checkbox">
@@ -24,30 +54,6 @@
         </svg>
     </label>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-import { useCookies } from '@vueuse/integrations/useCookies'
-
-const isDarkMode = ref(false);
-
-const cookies = useCookies(['mode'])
-if(cookies.get('mode')) {
-    isDarkMode.value = cookies.get('mode') === 'dark'
-// If browser default is dark mode
-} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    isDarkMode.value = true
-    cookies.set('mode', 'dark')
-} else {
-    cookies.set('mode', 'light')
-}
-
-
-function toggleMode() {
-    isDarkMode.value = !isDarkMode.value
-    cookies.set('mode', isDarkMode.value ? 'dark' : 'light')
-}
-</script>
 
 <style scoped lang="scss">
 $timing-transition: all 300ms ease-in-out;

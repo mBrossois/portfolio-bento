@@ -9,11 +9,11 @@
 
 <style scoped lang="scss">
 .grid__section {
-    background: #ffffff14;
+    background: rgba(var(--foreground-primary-rgb), .14);
     border-radius: 16px;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    border: 1px solid #ffffff24;
+    border: 1px solid rgba(var(--foreground-primary-rgb), .24);
     overflow: hidden;
     transition: background ease-in-out 200ms, border ease-in-out 200ms;
 
@@ -23,8 +23,8 @@
     gap: 2rem;
 
     &:hover {
-        background: #ffffff33;
-        border: 1px solid #ffffff4d;
+        background: rgba(var(--foreground-primary-rgb), .33);
+        border: 1px solid rgba(var(--foreground-primary-rgb), 0.30);
     }
 }
 </style>
