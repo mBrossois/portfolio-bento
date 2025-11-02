@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-    <component :is="variant" class="text">
+    <component :is="variant" class="text mode-transition">
         <slot />
     </component>
 </template>

@@ -18,7 +18,7 @@ defineProps<{
                 <Component :is="image.component" :height="image.height + 'px'" :width="image.width + 'px'"/>
             </div>
         </div>
-        <div class="image-slider__loader"></div>
+        <div class="image-slider__loader mode-transition"></div>
     </div>
 </template>
 
@@ -44,7 +44,7 @@ defineProps<{
     }
 
     &__loader {
-        border: 1px solid #ffffff99;
+        border: 1px solid rgba(var(--foreground-primary-rgb), .5);
         border-radius: 2rem;
         height: 2rem;
         width: .5rem;
@@ -55,13 +55,14 @@ defineProps<{
         position: relative;
 
         &::before {
+            transition: background var(--mode-transition-timing);
             position: absolute;
             content: '';
             top: 0;
             left: 0;
             height: 100%;
             width: 100%;
-            background-color: white;
+            background-color: var(--foreground-primary);
 
             animation: slide-down-and-up 20s linear infinite;
         }

@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <button class="grid__section">
+    <button class="grid__section mode-transition">
         <slot />
     </button>
 </template>
@@ -15,7 +15,6 @@
     -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(var(--foreground-primary-rgb), .24);
     overflow: hidden;
-    transition: background ease-in-out 200ms, border ease-in-out 200ms;
 
     display: flex;
     justify-content: center;
