@@ -27,6 +27,7 @@
 }
 
 .adjust-fill {
+  transition: all var(--mode-transition-timing);
   fill: var(--foreground-primary);
 }
 
