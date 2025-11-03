@@ -40,6 +40,8 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
         }
 
         &__poi {
+            transition: background-color 300ms ease-in-out;
+
             width: 2rem;
             height: 1rem;
             border-radius: 100%;
@@ -50,6 +52,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
 
             &::after {
                 content: '';
+                transition: background-color 300ms ease-in-out;
                 position: absolute;
                 top: .25rem;
                 left: .5rem;
@@ -61,6 +64,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
         }
 
         &__road {
+            transition: border-bottom 300ms ease-in-out, border-right 300ms ease-in-out;
             top: 6rem;
             left: .5rem;
             width: 10rem;
