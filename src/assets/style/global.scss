@@ -13,6 +13,7 @@
 .light {
     --bg-primary: #fff;
     --foreground-primary: #000;
+    --foreground-secondary: #504F4F;
 
     --bg-primary-rgb: 255, 255, 255;
     --foreground-primary-rgb: 0, 0, 0;
@@ -21,14 +22,33 @@
 .dark {
   --bg-primary: #000;
   --foreground-primary: #fff;
+  --foreground-secondary: #d8d8d8;
 
     --bg-primary-rgb: 0, 0, 0;
     --foreground-primary-rgb: 255, 255, 255;
 }
 
+.adjust-stroke,
+.adjust-fill,
+.adjust-fill-interverted,
+.adjust-stroke-inverted {
+    transition: all var(--mode-transition-timing);
+}
+
+.adjust-stroke {
+  stroke: var(--foreground-primary);
+}
+
+.adjust-stroke-inverted {
+  stroke: var(--bg-primary);
+}
+
 .adjust-fill {
-  transition: all var(--mode-transition-timing);
   fill: var(--foreground-primary);
+}
+
+.adjust-fill-inverted {
+  fill: var(--bg-primary);
 }
 
 .mode-transition {

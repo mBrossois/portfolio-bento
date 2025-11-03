@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppGridSection from '@/components/AppGridSection.vue';
 import SectionExperience from '@/components/sections/SectionExperience.vue';
+import SectionLearning from '@/components/sections/SectionLearning.vue';
 import ImageSlider from '@/components/ImageSlider.vue';
 import AppText from '@/components/AppText.vue'
 import nuxtIcon from '@/components/icons/LogoNuxt.vue';
@@ -23,7 +24,7 @@ const logos = [
         </AppGridSection>
 
         <AppGridSection class="grid-col-3-6 grid-row-1-3">
-            <div>
+            <div class="grid__content">
                 <AppText variant="h1" class="grid__title">Projects</AppText>
                 <AppText variant="p" class="grid__description">From an intergrated Nuxt mocking service to a wedding website</AppText>
             </div>
@@ -39,8 +40,7 @@ const logos = [
         </AppGridSection>
 
         <AppGridSection class="grid-col-3-6 grid-row-6-8">
-            <AppText variant="h1" class="grid__title">Insights</AppText>
-
+            <SectionLearning />
         </AppGridSection>
 
         <AppGridSection class="grid-col-3-6 grid-row-8-10">
@@ -60,8 +60,10 @@ const logos = [
     padding-bottom: 1rem;
     justify-content: center;
 
-    &__title {
-        padding-top: 1rem;
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
     }
 
     &__description {
