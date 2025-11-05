@@ -43,9 +43,10 @@ const logos = [
             <SectionLearning />
         </AppGridSection>
 
-        <AppGridSection class="grid-col-3-6 grid-row-8-10">
-            <AppText variant="h1" class="grid__title">Contact me</AppText>
-
+        <AppGridSection class="grid__section grid-col-3-6 grid-row-8-10">
+            <div class="grid__as-button">
+                <AppText variant="h1" class="grid__title">Contact me</AppText>
+            </div>
         </AppGridSection>
     </div>
 </template>
@@ -72,6 +73,19 @@ const logos = [
 
     &__me {
         margin-top: 3rem;
+    }
+
+    &__as-button {
+        transition: background-color var(--mode-transition-timing), border var(--mode-transition-timing);
+        border-radius: 8px;
+        height: 3rem;
+        width: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--bg-secondary);
+        border: 4px solid var(--bg-secondary);
+        box-shadow: 1px 1px 10px 0px #00000080;
     }
 }
 </style>

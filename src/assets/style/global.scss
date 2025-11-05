@@ -12,6 +12,7 @@
 
 .light {
     --bg-primary: #fff;
+    --bg-secondary: #defff2;
     --foreground-primary: #000;
     --foreground-secondary: #504F4F;
 
@@ -21,11 +22,12 @@
 
 .dark {
   --bg-primary: #000;
+  --bg-secondary: #229e6b;
   --foreground-primary: #fff;
   --foreground-secondary: #d8d8d8;
 
-    --bg-primary-rgb: 0, 0, 0;
-    --foreground-primary-rgb: 255, 255, 255;
+  --bg-primary-rgb: 0, 0, 0;
+  --foreground-primary-rgb: 255, 255, 255;
 }
 
 .adjust-stroke,
