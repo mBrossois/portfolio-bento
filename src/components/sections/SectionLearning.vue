@@ -27,7 +27,11 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
     text-align: start;
 
     .grid__title {
-        width: 12rem;
+        width: 6rem;
+
+        @media screen and (min-width: map.get($screen-sizes, 'm')) {
+            width: 12rem;
+        }
     }
 
     &__content {
@@ -78,11 +82,15 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
             transition: border-bottom 300ms ease-in-out, border-right 300ms ease-in-out;
             top: 6rem;
             left: .5rem;
-            width: 21rem;
+            width: 10rem;
             height: 1.5rem;
             border-bottom-right-radius: 90%;
             border-bottom: 4px solid var(--foreground-secondary);
             border-right: 4px solid var(--foreground-secondary);
+
+            @media screen and (min-width: map.get($screen-sizes, 'm')) {
+                width: 21rem;
+            }
         }
 
         &__character {
