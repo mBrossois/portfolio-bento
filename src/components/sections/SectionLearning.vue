@@ -17,6 +17,9 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
 </template>
 
 <style lang="scss" scoped>
+@use '../../assets/style/screen-sizes.scss' as *;
+@use "sass:map";
+
 .learning {
     display: flex;
     width: 100%;
@@ -24,7 +27,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
     text-align: start;
 
     .grid__title {
-        width: 6rem;
+        width: 12rem;
     }
 
     &__content {
@@ -37,6 +40,10 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
 
             left: 9rem;
             top: .5rem;
+
+            @media screen and (min-width: map.get($screen-sizes, 'm')) {
+                left: 20rem;
+            }
         }
 
         &__poi {
@@ -47,8 +54,12 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
             border-radius: 100%;
             background-color: var(--foreground-secondary);
 
-            left: 9.3125rem;
+            left: 9.375rem;
             top: 5.5rem;
+
+            @media screen and (min-width: map.get($screen-sizes, 'm')) {
+                left: 20.375rem;
+            }
 
             &::after {
                 content: '';
@@ -67,7 +78,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
             transition: border-bottom 300ms ease-in-out, border-right 300ms ease-in-out;
             top: 6rem;
             left: .5rem;
-            width: 10rem;
+            width: 21rem;
             height: 1.5rem;
             border-bottom-right-radius: 90%;
             border-bottom: 4px solid var(--foreground-secondary);
