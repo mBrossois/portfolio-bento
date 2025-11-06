@@ -1,4 +1,6 @@
 @forward './grid.scss';
+@use './screen-sizes.scss' as *;
+@use "sass:map";
 
 * {
     padding: 0;
@@ -63,4 +65,12 @@
 
 .absolute {
   position: absolute;
+}
+
+.hide-s {
+  display: none;
+
+  @media screen and (min-width: map.get($screen-sizes, 'm')) {
+    display: block;
+  }
 }
