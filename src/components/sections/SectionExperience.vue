@@ -17,6 +17,8 @@ import LogoBol from '@/components/icons/LogoBol.vue';
 </template>
 
 <style scoped lang="scss">
+@use "sass:map";
+
 .section__work {
     height: 100%;
     .grid__title {
@@ -27,6 +29,12 @@ import LogoBol from '@/components/icons/LogoBol.vue';
     &__logos {
         top: 6rem; 
         opacity: 90%;
+
+        @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+            scale: 1.5;
+            left: -.25rem;
+        }
+
         &__rel {
             top: 3.75rem;
             left: .5rem;

@@ -24,6 +24,7 @@
     &:hover {
         background: rgba(var(--foreground-primary-rgb), .33);
         border: 1px solid rgba(var(--foreground-primary-rgb), 0.30);
+        cursor: pointer;
     }
 }
 </style>

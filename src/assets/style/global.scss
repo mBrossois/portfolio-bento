@@ -70,7 +70,7 @@
 .hide-s {
   display: none;
 
-  @media screen and (min-width: map.get($screen-sizes, 'm')) {
+  @media screen and (min-width: map.get($screen-sizes, 'md')) {
     display: block;
   }
 }

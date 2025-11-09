@@ -12,7 +12,11 @@ $gridValues: (
     8: '8',
     9: '9',
     10: '10',
-    11: '11'
+    11: '11',
+    12: '12',
+    13: '13',
+    14: '14',
+    15: '15'
 );
 
 $gridKeys: (
@@ -31,11 +35,20 @@ $gridKeys: (
                     grid-row: #{$nameStart} / #{$nameEnd};
                 }
 
-                @media screen and (min-width: map.get($screen-sizes, 'm')) {
+                @media screen and (min-width: map.get($screen-sizes, 'md')) {
                     .md-grid-col-#{$nameStart}-#{$nameEnd}.md-grid-col-#{$nameStart}-#{$nameEnd} {
                         grid-column: #{$nameStart} / #{$nameEnd};
                     }
                     .md-grid-row-#{$nameStart}-#{$nameEnd}.md-grid-row-#{$nameStart}-#{$nameEnd} {
+                        grid-row: #{$nameStart} / #{$nameEnd};
+                    }
+                }
+
+                @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+                    .lg-grid-col-#{$nameStart}-#{$nameEnd}.lg-grid-col-#{$nameStart}-#{$nameEnd}.lg-grid-col-#{$nameStart}-#{$nameEnd} {
+                        grid-column: #{$nameStart} / #{$nameEnd};
+                    }
+                    .lg-grid-row-#{$nameStart}-#{$nameEnd}.lg-grid-row-#{$nameStart}-#{$nameEnd}.lg-grid-row-#{$nameStart}-#{$nameEnd} {
                         grid-row: #{$nameStart} / #{$nameEnd};
                     }
                 }
