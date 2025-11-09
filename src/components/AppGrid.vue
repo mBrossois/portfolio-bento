@@ -41,7 +41,7 @@ const logos = [
         <AppGridSection 
             class="grid-row-3-6 grid-col-1-6
                 md-grid-row-3-5 md-grid-col-1-8
-                lg-grid-row-4-6 md-grid-col-1-10"
+                lg-grid-row-4-6 lg-grid-col-1-10"
         >
             <div class="grid__content">
                 <AppText variant="h1" class="grid__title">Skill set</AppText>
