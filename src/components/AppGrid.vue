@@ -21,6 +21,7 @@ const logos = [
         <AppGridSection 
             class="grid-row-1-3 grid-col-1-3
                 md-grid-row-1-3 md-grid-col-1-4
+                lg-grid-row-1-4
         ">
             <!-- <p class="grid__title">About me</p> -->
             <img class="grid__me" src="@/assets/img/me_anime.png" height="150px" width="100px" alt="Me in anime style" />
@@ -29,6 +30,7 @@ const logos = [
         <AppGridSection 
             class="grid-row-1-3 grid-col-3-6
                 md-gid-row-1-3 md-grid-col-4-8
+                lg-grid-row-1-4 lg-grid-col-4-10
             ">
             <div class="grid__content">
                 <AppText variant="h1" class="grid__title">Projects</AppText>
@@ -38,7 +40,8 @@ const logos = [
         
         <AppGridSection 
             class="grid-row-3-6 grid-col-1-6
-                md-grid-row-3-5 md-grid-col-1-8"
+                md-grid-row-3-5 md-grid-col-1-8
+                lg-grid-row-4-6 md-grid-col-1-10"
         >
             <div class="grid__content">
                 <AppText variant="h1" class="grid__title">Skill set</AppText>
@@ -50,6 +53,7 @@ const logos = [
         <AppGridSection 
             class="grid-row-6-10 grid-col-1-3
                 md-grid-row-1-5 md-grid-col-8-11
+                lg-grid-row-1-6 lg-grid-col-10-15
         ">
             <SectionExperience />
         </AppGridSection>
@@ -57,6 +61,7 @@ const logos = [
         <AppGridSection 
             class="grid-row-6-8 grid-col-3-6
                 md-grid-row-5-7 md-grid-col-1-7
+                lg-grid-row-6-9 lg-grid-col-1-11
         ">
             <SectionLearning />
         </AppGridSection>
@@ -64,16 +69,16 @@ const logos = [
         <AppGridSection 
             class="grid__section grid-row-8-10 grid-col-3-6
                 md-grid-row-5-7 md-grid-col-7-11
+                lg-grid-row-6-9 lg-grid-col-11-15
         ">
             <div class="grid__as-button">
-                <AppText variant="h1" class="grid__title">Contact me</AppText>
+                <AppText variant="p" class="grid__title">Contact me</AppText>
             </div>
         </AppGridSection>
     </div>
 </template>
 
 <style scoped lang="scss">
-@use '../assets/style/screen-sizes.scss' as *;
 @use "sass:map";
 
 .grid {
@@ -85,9 +90,14 @@ const logos = [
     padding-bottom: 1rem;
     justify-content: center;
 
-    @media screen and (min-width: map.get($screen-sizes, 'm')) {
+    @media screen and (min-width: map.get($screen-sizes, 'md')) {
             grid-template-columns: repeat(10, 3.5rem);
             grid-template-rows: repeat(6, 3.5rem);
+    }
+
+    @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+            grid-template-columns: repeat(14, 3.5rem);
+            grid-template-rows: repeat(8, 3.5rem);
     }
 
     &__content {
@@ -99,13 +109,18 @@ const logos = [
     &__description {
         width: 10rem;
 
-        @media screen and (min-width: map.get($screen-sizes, 'm')) {
+        @media screen and (min-width: map.get($screen-sizes, 'md')) {
             width: 16rem;
         }
     }
 
     &__me {
         margin-top: 3rem;
+
+        @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+            height: 200px;
+            width: 134px;
+        }
     }
 
     &__as-button {
@@ -119,6 +134,18 @@ const logos = [
         background-color: var(--bg-secondary);
         border: 4px solid var(--bg-secondary);
         box-shadow: 1px 1px 10px 0px #00000080;
+
+        .grid__title {
+            font-size: 1.25rem;
+        }
+
+        @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+            height: 5rem;
+
+            .grid__title {
+                font-size: 1.5rem;
+            }
+        }
     }
 }
 </style>
