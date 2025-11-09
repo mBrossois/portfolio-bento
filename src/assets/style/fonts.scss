@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Noto Sans Condensed";
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    src: url(/src/assets/fonts/noto/NotoSans_Condensed-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "Noto Sans Condensed";
+    font-optical-sizing: auto;
+    font-weight: medium;
+    font-style: normal;
+    src: url(/src/assets/fonts/noto/NotoSans_Condensed-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "Noto Sans Condensed";
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    src: url(/src/assets/fonts/noto/NotoSans_Condensed-Bold.ttf) format('truetype');
+}
+
+span, p, h1, h2, h3 {
+    font-family: "Noto Sans Condensed", sans-serif;
+}

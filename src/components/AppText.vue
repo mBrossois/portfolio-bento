@@ -23,13 +23,15 @@ defineProps<{
 
 p {
     font-size: 1rem;
+    letter-spacing: .5px;
 }
 
 h1 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
+    letter-spacing: .5px;
     @media screen and (min-width: map.get($screen-sizes, 'lg')) {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
 }
 
