@@ -1,5 +1,4 @@
 @use './screen-sizes.scss' as *;
-@use "sass:map";
 
 $gridValues: (
     1: '1',
@@ -35,7 +34,7 @@ $gridKeys: (
                     grid-row: #{$nameStart} / #{$nameEnd};
                 }
 
-                @media screen and (min-width: map.get($screen-sizes, 'md')) {
+                @media screen and (min-width: $md) {
                     .md-grid-col-#{$nameStart}-#{$nameEnd}.md-grid-col-#{$nameStart}-#{$nameEnd} {
                         grid-column: #{$nameStart} / #{$nameEnd};
                     }
@@ -44,7 +43,7 @@ $gridKeys: (
                     }
                 }
 
-                @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+                @media screen and (min-width: $lg) {
                     .lg-grid-col-#{$nameStart}-#{$nameEnd}.lg-grid-col-#{$nameStart}-#{$nameEnd}.lg-grid-col-#{$nameStart}-#{$nameEnd} {
                         grid-column: #{$nameStart} / #{$nameEnd};
                     }

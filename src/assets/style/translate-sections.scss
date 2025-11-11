@@ -1,0 +1,38 @@
+@use './screen-sizes.scss' as *;
+@use "sass:map";
+
+$translate-selected-section-sm: (
+    'about-me': 0,
+    'projects': -9rem,
+    'skill-set': 0 -9rem ,
+    'experience': 0 -22.5rem,
+    'learning-journey': -9rem -22.5rem,
+    'contact-me': -9rem -31.5rem
+);
+
+$translate-selected-section-md: (
+    'about-me': 0,
+    'projects': -13.5rem,
+    'skill-set': 0 -9rem,
+    'experience': -31.5rem 0,
+    'learning-journey': 0 -18rem,
+    'contact-me': -27rem -18rem
+);
+
+@mixin add-translate-sections() {
+    @each $key, $value in $translate-selected-section-sm {
+        .#{$key}.expanded {
+            translate: $value;
+        }
+    }
+
+    @each $key, $value in $translate-selected-section-md {
+        @media screen and (min-width: $md) {
+            .#{$key}.expanded {
+                translate: $value;
+            }
+        }
+    }
+};
+
+@include add-translate-sections()

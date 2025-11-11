@@ -15,8 +15,6 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-@use "sass:map";
-
 .text {
     color: var(--foreground-primary);
 }
@@ -30,7 +28,7 @@ h1 {
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: .5px;
-    @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+    @media screen and (min-width: $lg) {
         font-size: 2rem;
     }
 }
