@@ -26,7 +26,7 @@ function setDarkMode(value: boolean) {
 </script>
 
 <template>
-  <div :class="modeClass">
+  <div :class="modeClass" class="app-bg">
     <AppBackground :isDarkMode="isDarkMode" />
     <div class="mode-toggle relative">
       <AppModeToggle :is-initial-dark-mode="isDarkMode" @update="setDarkMode" />
@@ -36,6 +36,9 @@ function setDarkMode(value: boolean) {
 </template>
 
 <style lang="scss" scoped>
+.app-bg {
+  overflow: hidden;
+}
 .mode-toggle {
     display: flex;
     justify-content: flex-end;

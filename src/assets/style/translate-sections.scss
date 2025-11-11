@@ -1,0 +1,110 @@
+@use './screen-sizes.scss' as *;
+@use "sass:map";
+
+// Translation for selected sections
+$translate-selected-section-sm: (
+    'about-me': 0,
+    'projects': -9rem,
+    'skill-set': 0 -9rem ,
+    'experience': 0 -22.5rem,
+    'learning-journey': -9rem -22.5rem,
+    'contact-me': -9rem -31.5rem
+);
+
+$translate-selected-section-md: (
+    'about-me': 0,
+    'projects': -13.5rem,
+    'skill-set': 0 -9rem,
+    'experience': -31.5rem 0,
+    'learning-journey': 0 -18rem,
+    'contact-me': -27rem -18rem
+);
+
+$translate-selected-section-lg: (
+    'about-me': 0,
+    'projects': -13.5rem,
+    'skill-set': 0 -13.5rem,
+    'experience': -40.5rem 0,
+    'learning-journey': 0 -22.5rem,
+    'contact-me': -45rem -22.5rem
+);
+
+@mixin add-translate-sections() {
+    @each $key, $value in $translate-selected-section-sm {
+        .#{$key}.expand {
+            translate: $value;
+        }
+    }
+
+    @each $key, $value in $translate-selected-section-md {
+        @media screen and (min-width: $md) {
+            .#{$key}.expand {
+                translate: $value;
+            }
+        }
+    }
+
+    @each $key, $value in $translate-selected-section-lg {
+        @media screen and (min-width: $lg) {
+            .#{$key}.expand {
+                translate: $value;
+            }
+        }
+    }
+};
+
+@include add-translate-sections();
+
+// Translation out for non selected sections
+$translate-out-section-sm: (
+    'about-me': 0 -30rem,
+    'projects': 0 -30rem,
+    'skill-set': 30rem 0 ,
+    'experience': -30rem 0,
+    'learning-journey': 30rem 0,
+    'contact-me': 30rem 0
+);
+
+$translate-out-section-md: (
+    'about-me': 0 -40rem,
+    'projects': 0 -40rem,
+    'skill-set': -40rem 0 ,
+    'experience': 40rem 0,
+    'learning-journey': -40rem 0,
+    'contact-me': 40rem 0
+);
+
+$translate-out-section-lg: (
+    'about-me': 0 -50rem,
+    'projects': 0 -50rem,
+    'skill-set': -50rem 0 ,
+    'experience': 50rem 0,
+    'learning-journey': -50rem 0,
+    'contact-me': 50rem 0
+);
+
+@mixin add-translate-out() {
+    @each $key, $value in $translate-out-section-sm {
+        .#{$key}.translate-out {
+            translate: $value;
+        }
+    }
+
+    @each $key, $value in $translate-out-section-md {
+        @media screen and (min-width: $md) {
+            .#{$key}.translate-out {
+                translate: $value;
+            }
+        }
+    }
+
+    @each $key, $value in $translate-out-section-lg {
+        @media screen and (min-width: $lg) {
+            .#{$key}.translate-out {
+                translate: $value;
+            }
+        }
+    }
+};
+
+@include add-translate-out();

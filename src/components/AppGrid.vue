@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import AppGridSection from '@/components/AppGridSection.vue';
-import SectionExperience from '@/components/sections/SectionExperience.vue';
-import SectionLearning from '@/components/sections/SectionLearning.vue';
-import ImageSlider from '@/components/ImageSlider.vue';
+import { ref } from 'vue'
+import AppGridSection from '@/components/AppGridSection.vue'
+import SectionExperience from '@/components/sections/SectionExperience.vue'
+import SectionLearning from '@/components/sections/SectionLearning.vue'
+import ImageSlider from '@/components/ImageSlider.vue'
 import AppText from '@/components/AppText.vue'
-import nuxtIcon from '@/components/icons/LogoNuxt.vue';
-import vueIcon from '@/components/icons/LogoVue.vue';
-import tsIcon from '@/components/icons/LogoTs.vue';
+import nuxtIcon from '@/components/icons/LogoNuxt.vue'
+import vueIcon from '@/components/icons/LogoVue.vue'
+import tsIcon from '@/components/icons/LogoTs.vue'
 
 const logos = [
     {component: nuxtIcon, alt: 'Nuxt logo', width: 110, height: 71},
@@ -14,6 +15,12 @@ const logos = [
     {component: tsIcon, alt: 'Ts logo', width: 75, height: 71},
     {component: nuxtIcon, alt: 'Nuxt logo', width: 110, height: 71}
 ]
+
+const selectedSection = ref('')
+
+function setSelectedSection(section: string) {
+    selectedSection.value = section
+}
 </script>
 
 <template>
@@ -21,8 +28,11 @@ const logos = [
         <AppGridSection 
             class="grid-row-1-3 grid-col-1-3
                 md-grid-row-1-3 md-grid-col-1-4
-                lg-grid-row-1-4
-        ">
+                lg-grid-row-1-4"
+            name="about-me"  
+            :expanded-section="selectedSection"  
+            @set-selected="setSelectedSection"
+        >
             <!-- <p class="grid__title">About me</p> -->
             <img class="grid__me" src="@/assets/img/me_anime.png" height="150px" width="100px" alt="Me in anime style" />
         </AppGridSection>
@@ -30,8 +40,11 @@ const logos = [
         <AppGridSection 
             class="grid-row-1-3 grid-col-3-6
                 md-gid-row-1-3 md-grid-col-4-8
-                lg-grid-row-1-4 lg-grid-col-4-10
-            ">
+                lg-grid-row-1-4 lg-grid-col-4-10"
+            name="projects" 
+            :expanded-section="selectedSection"  
+            @set-selected="setSelectedSection"   
+        >
             <div class="grid__content">
                 <AppText variant="h1" class="grid__title">Projects</AppText>
                 <AppText variant="p" class="grid__description">From an intergrated Nuxt mocking service to a wedding website</AppText>
@@ -42,6 +55,9 @@ const logos = [
             class="grid-row-3-6 grid-col-1-6
                 md-grid-row-3-5 md-grid-col-1-8
                 lg-grid-row-4-6 lg-grid-col-1-10"
+            name="skill-set"    
+            :expanded-section="selectedSection"  
+            @set-selected="setSelectedSection"
         >
             <div class="grid__content">
                 <AppText variant="h1" class="grid__title">Skill set</AppText>
@@ -53,24 +69,33 @@ const logos = [
         <AppGridSection 
             class="grid-row-6-10 grid-col-1-3
                 md-grid-row-1-5 md-grid-col-8-11
-                lg-grid-row-1-6 lg-grid-col-10-15
-        ">
+                lg-grid-row-1-6 lg-grid-col-10-15"
+            name="experience"
+            :expanded-section="selectedSection"  
+            @set-selected="setSelectedSection"
+        >
             <SectionExperience />
         </AppGridSection>
 
         <AppGridSection 
             class="grid-row-6-8 grid-col-3-6
                 md-grid-row-5-7 md-grid-col-1-7
-                lg-grid-row-6-9 lg-grid-col-1-11
-        ">
+                lg-grid-row-6-9 lg-grid-col-1-11"
+            name="learning-journey"
+            :expanded-section="selectedSection"  
+            @set-selected="setSelectedSection"
+        >
             <SectionLearning />
         </AppGridSection>
 
         <AppGridSection 
             class="grid__section grid-row-8-10 grid-col-3-6
                 md-grid-row-5-7 md-grid-col-7-11
-                lg-grid-row-6-9 lg-grid-col-11-15
-        ">
+                lg-grid-row-6-9 lg-grid-col-11-15"
+            name="contact-me"
+            :expanded-section="selectedSection"  
+            @set-selected="setSelectedSection"
+        >
             <div class="grid__as-button">
                 <AppText variant="p" class="grid__title">Contact me</AppText>
             </div>
@@ -79,8 +104,6 @@ const logos = [
 </template>
 
 <style scoped lang="scss">
-@use "sass:map";
-
 .grid {
     display: grid;
     grid-template-rows: repeat(9, 3.5rem);
@@ -90,12 +113,12 @@ const logos = [
     padding-bottom: 1rem;
     justify-content: center;
 
-    @media screen and (min-width: map.get($screen-sizes, 'md')) {
+    @media screen and (min-width: $md) {
             grid-template-columns: repeat(10, 3.5rem);
             grid-template-rows: repeat(6, 3.5rem);
     }
 
-    @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+    @media screen and (min-width: $lg) {
             grid-template-columns: repeat(14, 3.5rem);
             grid-template-rows: repeat(8, 3.5rem);
     }
@@ -109,7 +132,7 @@ const logos = [
     &__description {
         width: 10rem;
 
-        @media screen and (min-width: map.get($screen-sizes, 'md')) {
+        @media screen and (min-width: $md) {
             width: 16rem;
         }
     }
@@ -117,7 +140,7 @@ const logos = [
     &__me {
         margin-top: 3rem;
 
-        @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+        @media screen and (min-width: $lg) {
             height: 200px;
             width: 134px;
         }
@@ -139,7 +162,7 @@ const logos = [
             font-size: 1.25rem;
         }
 
-        @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+        @media screen and (min-width: $lg) {
             height: 5rem;
 
             .grid__title {

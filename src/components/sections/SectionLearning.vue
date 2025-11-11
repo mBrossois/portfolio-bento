@@ -17,8 +17,6 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
 </template>
 
 <style lang="scss" scoped>
-@use "sass:map";
-
 .learning {
     display: flex;
     width: 100%;
@@ -28,11 +26,11 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
     .grid__title {
         width: 6rem;
 
-        @media screen and (min-width: map.get($screen-sizes, 'md')) {
+        @media screen and (min-width: $md) {
             width: 12rem;
         }
 
-        @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+        @media screen and (min-width: $lg) {
             width: 16rem;
         }
     }
@@ -48,11 +46,11 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
             left: 9rem;
             top: .5rem;
 
-            @media screen and (min-width: map.get($screen-sizes, 'md')) {
+            @media screen and (min-width: $md) {
                 left: 20rem;
             }
 
-            @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+            @media screen and (min-width: $lg) {
                 width: 88px;
                 height: 150px;
                 left: 36rem;
@@ -70,11 +68,11 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
             left: 9.375rem;
             top: 5.5rem;
 
-            @media screen and (min-width: map.get($screen-sizes, 'md')) {
+            @media screen and (min-width: $md) {
                 left: 20.375rem;
             }
 
-            @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+            @media screen and (min-width: $lg) {
                 width: 4rem;
                 height: 1.5rem;
                 top: 10.25rem;
@@ -92,7 +90,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
                 border-radius: 100%;
                 background-color: #000000c7;
 
-                @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+                @media screen and (min-width: $lg) {
                     width: 1.75rem;
                     height: .75rem;
                     left: 1rem;
@@ -111,11 +109,11 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
             border-bottom: 4px solid var(--foreground-secondary);
             border-right: 4px solid var(--foreground-secondary);
 
-            @media screen and (min-width: map.get($screen-sizes, 'md')) {
+            @media screen and (min-width: $md) {
                 width: 21rem;
             }
 
-            @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+            @media screen and (min-width: $lg) {
                 width: 39rem;
                 border-width: 6px;
                 top: 11rem;
@@ -130,7 +128,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
             top: 5.5rem;
             left: .5rem;
 
-            @media screen and (min-width: map.get($screen-sizes, 'lg')) {
+            @media screen and (min-width: $lg) {
                 width: 14px;
                 height: 30px;
                 top: 9.5rem;
