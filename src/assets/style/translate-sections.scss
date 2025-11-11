@@ -19,6 +19,15 @@ $translate-selected-section-md: (
     'contact-me': -27rem -18rem
 );
 
+$translate-selected-section-lg: (
+    'about-me': 0,
+    'projects': -13.5rem,
+    'skill-set': 0 -13.5rem,
+    'experience': -40.5rem 0,
+    'learning-journey': 0 -22.5rem,
+    'contact-me': -45rem -22.5rem
+);
+
 @mixin add-translate-sections() {
     @each $key, $value in $translate-selected-section-sm {
         .#{$key}.expanded {
@@ -28,6 +37,14 @@ $translate-selected-section-md: (
 
     @each $key, $value in $translate-selected-section-md {
         @media screen and (min-width: $md) {
+            .#{$key}.expanded {
+                translate: $value;
+            }
+        }
+    }
+
+    @each $key, $value in $translate-selected-section-lg {
+        @media screen and (min-width: $lg) {
             .#{$key}.expanded {
                 translate: $value;
             }
