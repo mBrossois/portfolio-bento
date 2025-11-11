@@ -1,19 +1,31 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 
-const props = defineProps<{name:string}>()
+const props = defineProps<{
+    name:string
+    expandedSection: string
+}>()
 
-const isExpanded = ref(false)
-const gridSectionClass = computed(() => ([{expanded: isExpanded.value}, props.name]))
-function onClick() {
-    isExpanded.value = !isExpanded.value
+const emit = defineEmits<{
+    (e: 'setSelected', name: string): void
+}>()
+
+const isExpanded = computed(() => props.expandedSection === props.name)
+const isOtherExpanded = computed(() => props.expandedSection !== '' && !isExpanded.value)
+const gridSectionClass = computed(() => ([{expand: isExpanded.value, 'translate-out': isOtherExpanded.value}, props.name]))
+function onOpen() {
+    emit('setSelected', props.name)
+}
+function onClose() {
+    emit('setSelected', '')
 }
 </script>
 
 <template>
-    <button :class="gridSectionClass" class="grid__section mode-transition" @click="onClick">
+    <div role="button" tabindex="0" :aria-pressed="isExpanded" :class="gridSectionClass" class="grid__section mode-transition" @click="onOpen">
+        <button v-show="isExpanded" @click.stop="onClose">Back</button>
         <slot />
-    </button>
+    </div>
 </template>
 
 <style scoped lang="scss">
@@ -33,10 +45,11 @@ function onClick() {
     gap: 2rem;
     width: 100%;
     height: 100%;
+    opacity: 1;
 
-    transition: width 300ms ease-in-out, height 300ms ease-in-out, translate 200ms ease-in-out 200ms;
+    transition: width 300ms ease-in-out, height 300ms ease-in-out, translate 300ms ease-in-out 300ms, opacity 100ms ease-in-out 300ms;
 
-    &.expanded {
+    &.expand {
         width: 344px;
         height: 632px;
 
@@ -50,10 +63,15 @@ function onClick() {
             height: 560px;
         }
 
-        transition: width 300ms ease-in-out 100ms, height 300ms ease-in-out 100ms, translate 200ms ease-in-out;
+        transition: width 500ms ease-in-out 400ms, height 500ms ease-in-out 400ms, translate 300ms ease-in-out 100ms;
     }
 
-    &:not(.expanded):hover {
+    &.translate-out {
+        opacity: 0;
+        transition: translate 300ms ease-in-out, opacity 100ms ease-in-out 200ms;
+    }
+
+    &:not(.expand):hover {
         background: rgba(var(--foreground-primary-rgb), .33);
         border: 1px solid rgba(var(--foreground-primary-rgb), 0.30);
         cursor: pointer;
