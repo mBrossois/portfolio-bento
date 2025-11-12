@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import IconBack from '@/components/icons/IconBack.vue';
+import ImageConstructionDigger from '@/components/icons/ImageConstructionDigger.vue';
 
 const props = defineProps<{
     name:string
@@ -28,7 +29,8 @@ function onClose() {
             <button class="back-button" aria-label="back button" @click.stop="onClose"><IconBack /></button>
         </div>
         <div class="content">
-            <slot />
+            <slot v-if="!isExpanded" />
+            <image-construction-digger v-else />
         </div>
     </div>
 </template>
