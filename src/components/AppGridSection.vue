@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import IconBack from '@/components/icons/IconBack.vue';
 import ImageConstructionDigger from '@/components/icons/ImageConstructionDigger.vue';
+import AppText from '@/components/AppText.vue';
 
 const props = defineProps<{
     name:string
@@ -30,7 +31,10 @@ function onClose() {
         </div>
         <div class="content">
             <slot v-if="!isExpanded" />
-            <image-construction-digger v-else />
+            <div class="content__under-construction" v-else>
+                <AppText variant="h1">Under construction</AppText>
+                <image-construction-digger />
+            </div>
         </div>
     </div>
 </template>
@@ -104,6 +108,12 @@ function onClose() {
         width: 100%;
         height: 100%;
         gap: 2rem;
+
+        &__under-construction {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
     }
 }
 </style>
