@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import IconBack from '@/components/icons/IconBack.vue';
+import ImageConstructionDigger from '@/components/icons/ImageConstructionDigger.vue';
+import AppText from '@/components/AppText.vue';
 
 const props = defineProps<{
     name:string
@@ -23,8 +26,16 @@ function onClose() {
 
 <template>
     <div role="button" tabindex="0" :aria-pressed="isExpanded" :class="gridSectionClass" class="grid__section mode-transition" @click="onOpen">
-        <button v-show="isExpanded" @click.stop="onClose">Back</button>
-        <slot />
+        <div v-show="isExpanded" class="top-bar">        
+            <button class="back-button" aria-label="back button" @click.stop="onClose"><IconBack /></button>
+        </div>
+        <div class="content">
+            <slot v-if="!isExpanded" />
+            <div class="content__under-construction" v-else>
+                <AppText variant="h1">Under construction</AppText>
+                <image-construction-digger />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -40,8 +51,7 @@ function onClose() {
     overflow: hidden;
 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     gap: 2rem;
     width: 100%;
     height: 100%;
@@ -75,6 +85,35 @@ function onClose() {
         background: rgba(var(--foreground-primary-rgb), .33);
         border: 1px solid rgba(var(--foreground-primary-rgb), 0.30);
         cursor: pointer;
+    }
+
+    .top-bar {
+        width: 100%;
+        padding: 1rem;
+
+        .back-button {
+            width: 2rem;
+            height: 2rem;
+
+            background-color: unset;
+            border: unset;
+            outline: unset;
+        }
+    }
+
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        gap: 2rem;
+
+        &__under-construction {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
     }
 }
 </style>

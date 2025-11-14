@@ -50,7 +50,7 @@ onMounted(() => {
     <canvas ref="canvas" class="background"/>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .background {
     transition: background 200ms ease-in-out;
     position: fixed;
