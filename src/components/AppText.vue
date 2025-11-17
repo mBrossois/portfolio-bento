@@ -4,7 +4,7 @@ defineSlots<{
 }>()
 
 defineProps<{
-    variant: 'p' | 'h1' | 'h2'
+    variant: 'span' | 'p' | 'h1' | 'h2'
 }>()
 </script>
 
@@ -19,7 +19,7 @@ defineProps<{
     color: var(--foreground-primary);
 }
 
-p {
+p, span {
     font-size: 1rem;
     letter-spacing: .5px;
 }

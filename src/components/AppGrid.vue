@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import AppGridSection from '@/components/AppGridSection.vue'
 import SectionExperience from '@/components/sections/SectionExperience.vue'
 import SectionLearning from '@/components/sections/SectionLearning.vue'
+import SectionContact from '@/components/sections/SectionContact.vue'
 import ImageSlider from '@/components/ImageSlider.vue'
 import AppText from '@/components/AppText.vue'
 import nuxtIcon from '@/components/icons/LogoNuxt.vue'
@@ -30,7 +31,8 @@ function setSelectedSection(section: string) {
                 md-grid-row-1-3 md-grid-col-1-4
                 lg-grid-row-1-4"
             name="about-me"  
-            :expanded-section="selectedSection"  
+            :expanded-section="selectedSection"
+            :is-under-construction="true"
             @set-selected="setSelectedSection"
         >
             <!-- <p class="grid__title">About me</p> -->
@@ -42,7 +44,8 @@ function setSelectedSection(section: string) {
                 md-gid-row-1-3 md-grid-col-4-8
                 lg-grid-row-1-4 lg-grid-col-4-10"
             name="projects" 
-            :expanded-section="selectedSection"  
+            :expanded-section="selectedSection"
+            :is-under-construction="true"
             @set-selected="setSelectedSection"   
         >
             <div class="grid__content">
@@ -56,7 +59,8 @@ function setSelectedSection(section: string) {
                 md-grid-row-3-5 md-grid-col-1-8
                 lg-grid-row-4-6 lg-grid-col-1-10"
             name="skill-set"    
-            :expanded-section="selectedSection"  
+            :expanded-section="selectedSection"
+            :is-under-construction="true"
             @set-selected="setSelectedSection"
         >
             <div class="grid__content">
@@ -71,7 +75,8 @@ function setSelectedSection(section: string) {
                 md-grid-row-1-5 md-grid-col-8-11
                 lg-grid-row-1-6 lg-grid-col-10-15"
             name="experience"
-            :expanded-section="selectedSection"  
+            :expanded-section="selectedSection"
+            :is-under-construction="true"
             @set-selected="setSelectedSection"
         >
             <SectionExperience />
@@ -82,7 +87,8 @@ function setSelectedSection(section: string) {
                 md-grid-row-5-7 md-grid-col-1-7
                 lg-grid-row-6-9 lg-grid-col-1-11"
             name="learning-journey"
-            :expanded-section="selectedSection"  
+            :expanded-section="selectedSection"
+            :is-under-construction="true"
             @set-selected="setSelectedSection"
         >
             <SectionLearning />
@@ -96,9 +102,7 @@ function setSelectedSection(section: string) {
             :expanded-section="selectedSection"  
             @set-selected="setSelectedSection"
         >
-            <div class="grid__as-button">
-                <AppText variant="p" class="grid__title">Contact me</AppText>
-            </div>
+            <SectionContact :is-expanded="selectedSection === 'contact-me'"/>
         </AppGridSection>
     </div>
 </template>
@@ -143,31 +147,6 @@ function setSelectedSection(section: string) {
         @media screen and (min-width: $lg) {
             height: 200px;
             width: 134px;
-        }
-    }
-
-    &__as-button {
-        transition: background-color var(--mode-transition-timing), border var(--mode-transition-timing);
-        border-radius: 8px;
-        height: 3rem;
-        width: 10rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--bg-secondary);
-        border: 4px solid var(--bg-secondary);
-        box-shadow: 1px 1px 10px 0px #00000080;
-
-        .grid__title {
-            font-size: 1.25rem;
-        }
-
-        @media screen and (min-width: $lg) {
-            height: 5rem;
-
-            .grid__title {
-                font-size: 1.5rem;
-            }
         }
     }
 }

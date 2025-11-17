@@ -7,6 +7,7 @@ import AppText from '@/components/AppText.vue';
 const props = defineProps<{
     name:string
     expandedSection: string
+    isUnderConstruction?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -26,15 +27,15 @@ function onClose() {
 
 <template>
     <div role="button" tabindex="0" :aria-pressed="isExpanded" :class="gridSectionClass" class="grid__section mode-transition" @click="onOpen">
-        <div v-show="isExpanded" class="top-bar">        
+        <div class="top-bar">        
             <button class="back-button" aria-label="back button" @click.stop="onClose"><IconBack /></button>
         </div>
         <div class="content">
-            <slot v-if="!isExpanded" />
-            <div class="content__under-construction" v-else>
+            <div class="content__under-construction" v-if="isExpanded && isUnderConstruction">
                 <AppText variant="h1">Under construction</AppText>
                 <image-construction-digger />
             </div>
+            <slot v-else />
         </div>
     </div>
 </template>
@@ -52,12 +53,12 @@ function onClose() {
 
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0;
     width: 100%;
     height: 100%;
     opacity: 1;
 
-    transition: width 300ms ease-in-out, height 300ms ease-in-out, translate 300ms ease-in-out 300ms, opacity 100ms ease-in-out 300ms;
+    transition: width 300ms ease-in-out, height 300ms ease-in-out, translate 300ms ease-in-out 300ms, opacity 100ms ease-in-out 300ms, gap 300ms ease-in-out;
 
     &.expand {
         width: 344px;
@@ -74,6 +75,16 @@ function onClose() {
         }
 
         transition: width 500ms ease-in-out 400ms, height 500ms ease-in-out 400ms, translate 300ms ease-in-out 100ms;
+
+        .top-bar {
+            padding: 1rem;
+            height: 4rem;
+            opacity: 1;
+        }
+
+        .content {
+            overflow: scroll;
+        }
     }
 
     &.translate-out {
@@ -89,7 +100,13 @@ function onClose() {
 
     .top-bar {
         width: 100%;
-        padding: 1rem;
+        padding: 0;
+
+        overflow: hidden;
+        height: 0;
+        opacity: 0;
+
+        transition: height 300ms ease-in-out, opacity 300ms ease-in-out, padding 300ms ease-in-out;
 
         .back-button {
             width: 2rem;
@@ -98,6 +115,10 @@ function onClose() {
             background-color: unset;
             border: unset;
             outline: unset;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 
