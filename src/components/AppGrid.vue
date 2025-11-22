@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { onKeyDown } from '@vueuse/core'
 import AppGridSection from '@/components/AppGridSection.vue'
 import SectionAboutMe from '@/components/sections/SectionAboutMe.vue'
 import SectionExperience from '@/components/sections/SectionExperience.vue'
@@ -23,6 +24,14 @@ const selectedSection = ref('')
 function setSelectedSection(section: string) {
     selectedSection.value = section
 }
+
+function resetSection(e: KeyboardEvent) {
+    setSelectedSection('')
+}
+
+onMounted(() => {
+    onKeyDown('Escape', resetSection)
+})
 </script>
 
 <template>
