@@ -80,6 +80,8 @@ function onClose() {
             padding: 1rem;
             height: 4rem;
             opacity: 1;
+
+            transition: height 300ms ease-in-out 500ms, opacity 300ms ease-in-out 500ms, padding 300ms ease-in-out 500ms;
         }
 
         .content {
