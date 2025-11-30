@@ -19,7 +19,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: 
-          '@use "/src/assets/style/screen-sizes.scss" as *; @use "/src/assets/style/fonts.scss" as *;'
+          '@use "/src/assets/style/screen-sizes.scss" as *; @use "/src/assets/style/fonts.scss" as *; @use "/src/assets/style/variables.scss" as *;'
       }
     }
   }

@@ -24,6 +24,13 @@ const aboutMeClass = computed(() => ({expanded: props.isExpanded}))
                 </div>
 
                 <div class="about-me__content__section">
+                    <AppText  variant="h2">Role</AppText>
+                    <AppText  variant="p">
+                        Frontend developer
+                    </AppText>
+                </div>
+
+                <div class="about-me__content__section">
                     <AppText  variant="h2">Location</AppText>
                     <AppText  variant="p">
                         France, Rouen
@@ -37,8 +44,8 @@ const aboutMeClass = computed(() => ({expanded: props.isExpanded}))
                     <AppText  variant="h2">About me</AppText>
                     <AppText  variant="p">
                         Hello and welcome to my portfolio!
-                        I am a Frontend developer originally from Netherlands
-                        and currently living in France.
+                        I am a <b>Frontend developer</b> originally from Netherlands
+                        and currently living in <b>France</b>.
                     </AppText>
                 </div>
 
@@ -90,6 +97,19 @@ const aboutMeClass = computed(() => ({expanded: props.isExpanded}))
             transition: margin-top 300ms ease-in-out 500ms;
             margin-top: .5rem;
 
+            &__image {
+                transition: height 300ms ease-in-out 500ms, width 300ms ease-in-out 500ms, translate 300ms ease-in-out 500ms;
+                width: 120px;
+                height: 180px;
+                translate: 0;
+
+                @media screen and (min-width: $lg) {
+                    height: 240px;
+                    width: 160px;
+                }
+
+            }
+
             &__content {
                 opacity: 1;
                 transition: height 0.3s ease-in-out 0.5s, width 0.3s ease-in-out 0.5s, opacity .3s ease-in-out .7s;
@@ -111,7 +131,14 @@ const aboutMeClass = computed(() => ({expanded: props.isExpanded}))
         }
 
         &__image {
+            transition: height 300ms ease-in-out, width 300ms ease-in-out, translate 300ms ease-in-out;
+
+            @media screen and (min-width: $md) {
+                translate: 30px;
+            }
+
             @media screen and (min-width: $lg) {
+                translate: 0;
                 height: 240px;
                 width: 160px;
             }
