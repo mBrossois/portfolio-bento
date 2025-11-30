@@ -56,7 +56,7 @@ const projectClass = computed(() => ({expanded: props.isExpanded}))
         }
 
         &__overview {
-            transition: opacity 200ms ease-in-out 700ms;
+            transition: opacity 300ms ease-in-out 800ms;
             opacity: 1;
         }
     }
