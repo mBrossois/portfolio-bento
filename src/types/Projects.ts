@@ -1,6 +1,5 @@
 export type ProjectLinks = {
-    github?: string
-    npm?: string,
+    code?: string
     website?: string
 }
 
@@ -19,4 +18,5 @@ export type ProjectsOverview = {
 
 export type ProjectTags = 
     'vue' | 'nuxt' | 'ts' | 'js' | 
-    'vite' | 'supabase' | 'nuxt module'
+    'vite' | 'supabase' | 'nuxt module' | 
+    'html' | 'css'

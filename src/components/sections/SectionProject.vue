@@ -2,49 +2,20 @@
 import { computed } from 'vue';
 import AppText from '@/components/AppText.vue';
 import ProjectsOverview from '@/components/ProjectsOverview.vue';
-import type { ProjectsOverview as ProjectsType } from '@/types/Projects';
+import { projects } from '@/constants/projects';
 
 const props = defineProps<{
     isExpanded: boolean
 }>()
 
 const projectClass = computed(() => ({expanded: props.isExpanded}))
-
-const projects: ProjectsType = {
-    projects: [
-        {
-            name: 'First',
-            description: 'More info for you',
-            status: 'Done',
-            image: '',
-            links: {},
-            tags: []
-        },
-        {
-            name: 'Second',
-            description: 'More info for you',
-            status: 'In progress',
-            image: '',
-            links: {},
-            tags: []
-        },
-        {
-            name: 'Third',
-            description: 'More info for you',
-            status: 'In progress',
-            image: '',
-            links: {},
-            tags: []
-        }
-    ]
-}
 </script>
 
 <template>
     <div class="projects" :class="projectClass">
         <AppText variant="h1" class="projects__title">Projects</AppText>
         <AppText variant="p" class="projects__description">From an integrated Nuxt mocking service to a wedding website</AppText>
-        <ProjectsOverview class="projects__overview" :projects="projects.projects" />
+        <ProjectsOverview class="projects__overview" :projects="projects" />
     </div>
 </template>
 
