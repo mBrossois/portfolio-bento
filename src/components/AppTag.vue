@@ -8,6 +8,7 @@ defineSlots<{
 }>()
 
 const props = defineProps<{
+    color: 'white' | 'black'
     variant?: ProjectTags
     size?: 'sm'
 }>()
@@ -17,7 +18,7 @@ const tagClasses = computed(() => [props.variant, props.size])
 
 <template>
     <div class="tag" :class="tagClasses">
-        <AppText class="tag__text" variant="p">
+        <AppText class="tag__text" :class="color" variant="p">
             <slot />
         </AppText>
     </div>
@@ -33,6 +34,14 @@ const tagClasses = computed(() => [props.variant, props.size])
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba($color: var(--foreground-primary-rgb), $alpha: .3);
+
+    &__text.white {
+        color: white;
+    }
+
+    &__text.black {
+        color: black;
+    }
 
     &.sm {
         padding: .125rem .5rem;
