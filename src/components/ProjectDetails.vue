@@ -11,7 +11,7 @@ defineProps<{project: ProjectDetails}>()
     <div class="project-details ">
         <div class="project-details__image relative">
             <img :src="project.image" :alt="'cover ' + project.name" class="project-details__image__inner" />
-            <AppTag class="project-details__image__title absolute">
+            <AppTag class="project-details__image__title absolute" :color="project.tagColor">
                 {{ project.status }}
             </AppTag>
         </div>
@@ -25,7 +25,7 @@ defineProps<{project: ProjectDetails}>()
                 <AppButton v-if="project.links.website" size="sm" :to="project.links.website" target="_blank">Go to website</AppButton>
             </div>
             <div class="project-details__description__tags">
-                <AppTag v-for="tag in project.tags" :key="tag" :variant="tag" size="sm">
+                <AppTag v-for="tag in project.tags" :key="tag" :variant="tag" size="sm" color="white">
                     {{ tag }}
                 </AppTag>
             </div>

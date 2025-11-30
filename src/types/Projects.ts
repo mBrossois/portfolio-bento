@@ -10,6 +10,7 @@ export type ProjectDetails = {
     image: string,
     links: ProjectLinks
     tags: Array<ProjectTags>
+    tagColor: 'white' | 'black'
 }
 
 export type ProjectsOverview = {
