@@ -26,9 +26,9 @@ function onClose() {
 </script>
 
 <template>
-    <div role="button" tabindex="0" :aria-pressed="isExpanded" :class="gridSectionClass" class="grid__section mode-transition" @click="onOpen">
-        <div class="top-bar">        
-            <button class="back-button" aria-label="back button" @click.stop="onClose"><IconBack /></button>
+    <div role="button" :tabindex="isOtherExpanded ? -1 : 0" :aria-pressed="isExpanded" :class="gridSectionClass" class="grid__section mode-transition" @click="onOpen" @keypress.enter="onOpen">
+        <div class="top-bar">
+            <button v-if="isExpanded" class="back-button" tabindex="0" aria-label="back button" @click.stop="onClose"><IconBack /></button>
         </div>
         <div class="content">
             <div class="content__under-construction" v-if="isExpanded && isUnderConstruction">
@@ -80,6 +80,8 @@ function onClose() {
             padding: 1rem;
             height: 4rem;
             opacity: 1;
+
+            transition: height 300ms ease-in-out 500ms, opacity 300ms ease-in-out 500ms, padding 300ms ease-in-out 500ms;
         }
 
         .content {
@@ -114,7 +116,6 @@ function onClose() {
 
             background-color: unset;
             border: unset;
-            outline: unset;
 
             &:hover {
                 cursor: pointer;

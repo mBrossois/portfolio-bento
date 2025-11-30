@@ -17,8 +17,6 @@ const messageModel = defineModel<string>('messageModel')
 const text = computed(() => props.isExpanded ? 'Send message' : 'Contact me')
 
 function openMail() {
-    console.log('topic', subjectModel.value)
-    console.log('message', messageModel.value)
     window.open(`mailto:m.deneutbrossois@hotmail.com?subject=${subjectModel.value}&body=${messageModel.value}`);
 }
 </script>
@@ -65,7 +63,6 @@ function openMail() {
 <style scoped lang="scss">
 .contact {
     display: flex;
-    // justify-content: center;
     flex-direction: column;
     gap: 1rem;
     padding: 0 1rem;

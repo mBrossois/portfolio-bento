@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { onKeyDown } from '@vueuse/core'
 import AppGridSection from '@/components/AppGridSection.vue'
+import SectionAboutMe from '@/components/sections/SectionAboutMe.vue'
+import SectionProject from '@/components/sections/SectionProject.vue'
 import SectionExperience from '@/components/sections/SectionExperience.vue'
 import SectionLearning from '@/components/sections/SectionLearning.vue'
 import SectionContact from '@/components/sections/SectionContact.vue'
@@ -22,6 +25,14 @@ const selectedSection = ref('')
 function setSelectedSection(section: string) {
     selectedSection.value = section
 }
+
+function resetSection(e: KeyboardEvent) {
+    setSelectedSection('')
+}
+
+onMounted(() => {
+    onKeyDown('Escape', resetSection)
+})
 </script>
 
 <template>
@@ -32,11 +43,9 @@ function setSelectedSection(section: string) {
                 lg-grid-row-1-4"
             name="about-me"  
             :expanded-section="selectedSection"
-            :is-under-construction="true"
             @set-selected="setSelectedSection"
         >
-            <!-- <p class="grid__title">About me</p> -->
-            <img class="grid__me" src="@/assets/img/me_anime.png" height="150px" width="100px" alt="Me in anime style" />
+            <SectionAboutMe :is-expanded="selectedSection === 'about-me'"/>
         </AppGridSection>
 
         <AppGridSection 
@@ -45,13 +54,9 @@ function setSelectedSection(section: string) {
                 lg-grid-row-1-4 lg-grid-col-4-10"
             name="projects" 
             :expanded-section="selectedSection"
-            :is-under-construction="true"
             @set-selected="setSelectedSection"   
         >
-            <div class="grid__content">
-                <AppText variant="h1" class="grid__title">Projects</AppText>
-                <AppText variant="p" class="grid__description">From an intergrated Nuxt mocking service to a wedding website</AppText>
-            </div>
+            <SectionProject :is-expanded="selectedSection === 'projects'" />
         </AppGridSection>
         
         <AppGridSection 
@@ -116,6 +121,9 @@ function setSelectedSection(section: string) {
 
     padding-bottom: 1rem;
     justify-content: center;
+    align-content: center;
+    $spacing-bottom: calc($height-topbar / 2);
+    min-height: calc(100vh - $height-topbar - $spacing-bottom);
 
     @media screen and (min-width: $md) {
             grid-template-columns: repeat(10, 3.5rem);
@@ -138,15 +146,6 @@ function setSelectedSection(section: string) {
 
         @media screen and (min-width: $md) {
             width: 16rem;
-        }
-    }
-
-    &__me {
-        margin-top: 3rem;
-
-        @media screen and (min-width: $lg) {
-            height: 200px;
-            width: 134px;
         }
     }
 }
