@@ -3,7 +3,7 @@ import type { ProjectDetails } from '@/types/Projects';
 
 export const projects: Array<ProjectDetails> = [
     {
-        name: 'Portfoliio',
+        name: 'Portfolio',
         description: 'This is my portfolio and the website you are currently on.',
         status: 'In progress',
         image: '/portfolio.png',
@@ -37,6 +37,30 @@ export const projects: Array<ProjectDetails> = [
             website: 'https://www.npmjs.com/package/nuxt-mocking-module'
         },
         tags: ['html', 'css', 'ts', 'vue', 'nuxt', 'nuxt module', 'vite'],
+        tagColor: 'black'
+    },
+    {
+        name: 'Birds on mousemove',
+        description: 'A simple JS application that will draw flying birds on the screen when you move your mouse.',
+        status: 'Done',
+        image: '/bird.png',
+        links: {
+            code: 'https://github.com/mBrossois/birds-on-mouse',
+            website: 'https://layton-bday-puzzle.netlify.app/'
+        },
+        tags: ['html', 'css', 'js'],
+        tagColor: 'white'
+    },
+        {
+        name: 'Airbnb',
+        description: 'Info about our airbnb, not active anymore. It has general info, 3d pictures of the airbnb & a map with interesting places.',
+        status: 'Done',
+        image: '/airbnb.png',
+        links: {
+            code: 'https://github.com/mBrossois/airbnb-travel-nest',
+            website: 'https://travel-nest-lyon.netlify.app/'
+        },
+        tags: ['html', 'css', 'js', 'vite'],
         tagColor: 'black'
     }
 ]
