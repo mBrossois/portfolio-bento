@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import AppText from '@/components/AppText.vue';
 import LogoJm from '@/components/icons/LogoJm.vue';
 import LogoRel from '@/components/icons/LogoRel.vue';
 import LogoBol from '@/components/icons/LogoBol.vue';
+
+const props = defineProps<{
+    isExpanded: boolean
+}>()
+
+const workingClass = computed(() => ({expanded: props.isExpanded}))
  </script>
 
 <template>
-    <div class="section__work relative">
+    <div class="section__work relative" :class="workingClass">
         <AppText variant="h1" class="grid__title">Experience</AppText>
         <div class="section__work__logos absolute">
             <LogoJm class="absolute"/>
