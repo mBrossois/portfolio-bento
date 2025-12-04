@@ -1,20 +1,39 @@
 <script setup lang="ts">
 import AppText from '@/components/AppText.vue';
+import AppTag from '@/components/AppTag.vue';
 
 defineProps<{
     company: string,
     jobTitle: string,
     start: number,
     end: number | 'Present',
-    description: string
+    description: string,
+    tags: Array<string>
 }>()
 </script>
 
 <template>
-    <div>
-        <AppText variant="p">{{ company }}</AppText>
-        <AppText variant="h2">{{ jobTitle }}</AppText>
+    <div class="experience-details">
+        <div>
+            <AppText variant="h3">{{ company }}</AppText>
+            <AppText variant="h2">{{ jobTitle }}</AppText>
+        </div>
         <AppText variant="p">{{ description }}</AppText>
-        <div><AppText variant="span">{{ start }}</AppText> - <AppText variant="span">{{ end }}</AppText></div>
+        <div class="experience-details__tags"><AppText variant="span">Tech stack:</AppText><AppTag v-for="tag in tags" :key="tag" color="white" size="sm">{{tag}}</AppTag> </div>
+        <AppText variant="span">{{ start }} - {{ end }}</AppText>
     </div>
 </template>
+
+<style lang="scss" scoped>
+.experience-details {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+
+    &__tags {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+    }
+}
+</style>

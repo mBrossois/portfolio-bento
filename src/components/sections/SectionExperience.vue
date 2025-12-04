@@ -11,13 +11,29 @@ const props = defineProps<{
 }>()
 
 const workingClass = computed(() => ({expanded: props.isExpanded}))
+
+const techStacks = {
+    jm: [
+        'Vue',
+        'Nuxt',
+        'TS',
+        'Nuxt Modules',
+        'Nuxt Layers',
+        'Nuxt Content',
+        'Nuxt Studio',
+        'Vite',
+        'Docker',
+        'Gitlab',
+        'Figma'
+    ]
+}
  </script>
 
 <template>
     <div class="work relative" :class="workingClass">
         <AppText variant="h1" class="work__title">Experience</AppText>
         <div class="work__logos absolute">
-            <LogoJm class="absolute"/>
+            <LogoJm class="work__logos__jm absolute"/>
             <LogoRel class="work__logos__rel absolute"/>
             <LogoBol class="work__logos__bol absolute"/>
         </div>
@@ -29,6 +45,7 @@ const workingClass = computed(() => ({expanded: props.isExpanded}))
                     :start="2024"
                     end="Present"
                     description="Leading the development of the design system, migration to Vue & Nuxt 3 and setting up the Marketing CMS."
+                    :tags="techStacks.jm"
                     />
             </div>
             <div class="work__description__content"></div>
@@ -96,6 +113,12 @@ const workingClass = computed(() => ({expanded: props.isExpanded}))
         &__logos {
             transition: left 500ms ease-in-out 400ms;
             left: 1rem;
+
+            &__jm {
+                height: 11px;
+                width: auto;
+                translate: 0 -12px;
+            }
         }
 
         &__description {
