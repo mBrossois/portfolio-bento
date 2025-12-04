@@ -37,7 +37,6 @@ const projectClass = computed(() => ({expanded: props.isExpanded}))
         @media screen and (min-width: $md) {
             width: 16rem;
         }
-
     }
 
     &__overview {
@@ -58,6 +57,7 @@ const projectClass = computed(() => ({expanded: props.isExpanded}))
         &__overview {
             transition: opacity 300ms ease-in-out 800ms;
             opacity: 1;
+            padding-bottom: 1rem;
         }
     }
 }
