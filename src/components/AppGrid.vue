@@ -21,9 +21,19 @@ const logos = [
     {component: nuxtIcon, alt: 'Nuxt logo', width: 110, height: 71}
 ]
 
-const selectedSection = ref('')
+const selectedSection = ref(window.location.hash.substring(1))
+
+addEventListener('hashchange', () => { 
+    selectedSection.value = window.location.hash.substring(1)
+})
+
 
 function setSelectedSection(section: string) {
+    if(section !== '') {
+        window.location.hash = section
+    } else {
+        window.location.hash = ''
+    }
     selectedSection.value = section
 }
 
