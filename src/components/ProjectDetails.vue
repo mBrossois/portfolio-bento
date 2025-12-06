@@ -4,7 +4,10 @@ import AppText from '@/components/AppText.vue';
 import AppButton from '@/components/AppButton.vue';
 import AppTag from '@/components/AppTag.vue';
 
-defineProps<{project: ProjectDetails}>()
+defineProps<{
+    isExpanded: boolean
+    project: ProjectDetails
+    }>()
 </script>
 
 <template>
@@ -21,8 +24,8 @@ defineProps<{project: ProjectDetails}>()
                 <AppText class="project-details__description__text__details" variant="p">{{ project.description }}</AppText>
             </div>
             <div class="project-details__description__cta">
-                <AppButton v-if="project.links.code" size="sm" :to="project.links.code" target="_blank">Go to code</AppButton>
-                <AppButton v-if="project.links.website" size="sm" :to="project.links.website" target="_blank">Go to website</AppButton>
+                <AppButton v-if="project.links.code" :tabindex="isExpanded ? 0 : -1" size="sm" :to="project.links.code" target="_blank">Go to code</AppButton>
+                <AppButton v-if="project.links.website" :tabindex="isExpanded ? 0 : -1"  size="sm" :to="project.links.website" target="_blank">Go to website</AppButton>
             </div>
             <div class="project-details__description__tags">
                 <AppTag v-for="tag in project.tags" :key="tag" :variant="tag" size="sm" color="white">

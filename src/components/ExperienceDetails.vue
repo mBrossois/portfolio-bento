@@ -15,7 +15,7 @@ defineProps<{
 <template>
     <div class="experience-details">
         <div>
-            <AppText variant="h3">{{ company }}</AppText>
+            <AppText class="experience-details__company" variant="h3">{{ company }}</AppText>
             <AppText variant="h2">{{ jobTitle }}</AppText>
         </div>
         <AppText variant="p">{{ description }}</AppText>
@@ -34,6 +34,7 @@ defineProps<{
         display: flex;
         gap: .5rem;
         align-items: center;
+        flex-wrap: wrap;
     }
 }
 </style>
