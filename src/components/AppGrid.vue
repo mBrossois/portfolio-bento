@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { onKeyDown } from '@vueuse/core'
 import AppGridSection from '@/components/AppGridSection.vue'
 import SectionAboutMe from '@/components/sections/SectionAboutMe.vue'
@@ -12,6 +12,7 @@ import AppText from '@/components/AppText.vue'
 import nuxtIcon from '@/components/icons/LogoNuxt.vue'
 import vueIcon from '@/components/icons/LogoVue.vue'
 import tsIcon from '@/components/icons/LogoTs.vue'
+import { Section } from '@/constants'
 
 const logos = [
     {component: nuxtIcon, alt: 'Nuxt logo', width: 110, height: 71},
@@ -26,7 +27,7 @@ function setSelectedSection(section: string) {
     selectedSection.value = section
 }
 
-function resetSection(e: KeyboardEvent) {
+function resetSection() {
     setSelectedSection('')
 }
 
@@ -41,29 +42,29 @@ onMounted(() => {
             class="grid-row-1-3 grid-col-1-3
                 md-grid-row-1-3 md-grid-col-1-4
                 lg-grid-row-1-4"
-            name="about-me"  
+            :name="Section.aboutMe"  
             :expanded-section="selectedSection"
             @set-selected="setSelectedSection"
         >
-            <SectionAboutMe :is-expanded="selectedSection === 'about-me'"/>
+            <SectionAboutMe :is-expanded="selectedSection === Section.aboutMe"/>
         </AppGridSection>
 
         <AppGridSection 
             class="grid-row-1-3 grid-col-3-6
                 md-gid-row-1-3 md-grid-col-4-8
                 lg-grid-row-1-4 lg-grid-col-4-10"
-            name="projects" 
+            :name="Section.projects" 
             :expanded-section="selectedSection"
             @set-selected="setSelectedSection"   
         >
-            <SectionProject :is-expanded="selectedSection === 'projects'" />
+            <SectionProject :is-expanded="selectedSection === Section.projects" />
         </AppGridSection>
         
         <AppGridSection 
             class="grid-row-3-6 grid-col-1-6
                 md-grid-row-3-5 md-grid-col-1-8
                 lg-grid-row-4-6 lg-grid-col-1-10"
-            name="skill-set"    
+            :name="Section.skillSet"    
             :expanded-section="selectedSection"
             :is-under-construction="true"
             @set-selected="setSelectedSection"
@@ -79,19 +80,18 @@ onMounted(() => {
             class="grid-row-6-10 grid-col-1-3
                 md-grid-row-1-5 md-grid-col-8-11
                 lg-grid-row-1-6 lg-grid-col-10-15"
-            name="experience"
+            :name="Section.experience"
             :expanded-section="selectedSection"
-            :is-under-construction="true"
             @set-selected="setSelectedSection"
         >
-            <SectionExperience />
+            <SectionExperience :is-expanded="selectedSection === Section.experience" />
         </AppGridSection>
 
         <AppGridSection 
             class="grid-row-6-8 grid-col-3-6
                 md-grid-row-5-7 md-grid-col-1-7
                 lg-grid-row-6-9 lg-grid-col-1-11"
-            name="learning-journey"
+            :name="Section.learningJourney"
             :expanded-section="selectedSection"
             :is-under-construction="true"
             @set-selected="setSelectedSection"
@@ -103,11 +103,11 @@ onMounted(() => {
             class="grid__section grid-row-8-10 grid-col-3-6
                 md-grid-row-5-7 md-grid-col-7-11
                 lg-grid-row-6-9 lg-grid-col-11-15"
-            name="contact-me"
+            :name="Section.contactMe"
             :expanded-section="selectedSection"  
             @set-selected="setSelectedSection"
         >
-            <SectionContact :is-expanded="selectedSection === 'contact-me'"/>
+            <SectionContact :is-expanded="selectedSection === Section.contactMe"/>
         </AppGridSection>
     </div>
 </template>

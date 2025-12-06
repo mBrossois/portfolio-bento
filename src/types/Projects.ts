@@ -14,6 +14,7 @@ export type ProjectDetails = {
 }
 
 export type ProjectsOverview = {
+    isExpanded: boolean
     projects: Array<ProjectDetails>
 }
 

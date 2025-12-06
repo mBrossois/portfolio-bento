@@ -7,7 +7,7 @@ defineProps<ProjectsOverview>()
 
 <template>
     <div class="projects__overview">
-        <ProjectDetails v-for="project in projects" :key="project.name" :project="project" />
+        <ProjectDetails v-for="project in projects" :key="project.name" :project="project" :is-expanded="isExpanded" />
     </div>
 </template>
 

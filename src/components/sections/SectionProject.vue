@@ -15,7 +15,7 @@ const projectClass = computed(() => ({expanded: props.isExpanded}))
     <div class="projects" :class="projectClass">
         <AppText variant="h1" class="projects__title">Projects</AppText>
         <AppText variant="p" class="projects__description">From an integrated Nuxt mocking service to a wedding website</AppText>
-        <ProjectsOverview class="projects__overview" :projects="projects" />
+        <ProjectsOverview class="projects__overview" :projects="projects" :is-expanded="isExpanded"/>
     </div>
 </template>
 
@@ -37,7 +37,6 @@ const projectClass = computed(() => ({expanded: props.isExpanded}))
         @media screen and (min-width: $md) {
             width: 16rem;
         }
-
     }
 
     &__overview {
@@ -58,6 +57,7 @@ const projectClass = computed(() => ({expanded: props.isExpanded}))
         &__overview {
             transition: opacity 300ms ease-in-out 800ms;
             opacity: 1;
+            padding-bottom: 1rem;
         }
     }
 }
