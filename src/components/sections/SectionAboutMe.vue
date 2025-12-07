@@ -44,7 +44,7 @@ const aboutMeClass = computed(() => ({expanded: props.isExpanded}))
                     <AppText  variant="h2">About me</AppText>
                     <AppText  variant="p">
                         Hello and welcome to my portfolio!
-                        I am a <b>Frontend developer</b> originally from Netherlands
+                        I am a <b>Frontend developer</b> originally from the Netherlands
                         and currently living in <b>France</b>.
                     </AppText>
                 </div>
