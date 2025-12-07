@@ -7,19 +7,8 @@ import SectionProject from '@/components/sections/SectionProject.vue'
 import SectionExperience from '@/components/sections/SectionExperience.vue'
 import SectionLearning from '@/components/sections/SectionLearning.vue'
 import SectionContact from '@/components/sections/SectionContact.vue'
-import ImageSlider from '@/components/ImageSlider.vue'
-import AppText from '@/components/AppText.vue'
-import nuxtIcon from '@/components/icons/LogoNuxt.vue'
-import vueIcon from '@/components/icons/LogoVue.vue'
-import tsIcon from '@/components/icons/LogoTs.vue'
 import { Section } from '@/constants'
-
-const logos = [
-    {component: nuxtIcon, alt: 'Nuxt logo', width: 110, height: 71},
-    {component: vueIcon, alt: 'Vue logo', width: 82, height: 71},
-    {component: tsIcon, alt: 'Ts logo', width: 75, height: 71},
-    {component: nuxtIcon, alt: 'Nuxt logo', width: 110, height: 71}
-]
+import SectionSkills from '@/components/sections/SectionSkills.vue'
 
 const selectedSection = ref(window.location.hash.substring(1))
 
@@ -76,14 +65,9 @@ onMounted(() => {
                 lg-grid-row-4-6 lg-grid-col-1-10"
             :name="Section.skillSet"    
             :expanded-section="selectedSection"
-            :is-under-construction="true"
             @set-selected="setSelectedSection"
         >
-            <div class="grid__content">
-                <AppText variant="h1" class="grid__title">Skill set</AppText>
-                <AppText variant="p" class="grid__description hide-s">Technical & other profesional skills</AppText>
-            </div>
-            <ImageSlider :images="logos" />
+            <SectionSkills :is-expanded="selectedSection === Section.skillSet" />
         </AppGridSection>
         
         <AppGridSection 
@@ -143,12 +127,6 @@ onMounted(() => {
     @media screen and (min-width: $lg) {
             grid-template-columns: repeat(14, 3.5rem);
             grid-template-rows: repeat(8, 3.5rem);
-    }
-
-    &__content {
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
     }
 
     &__description {
