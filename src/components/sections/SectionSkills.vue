@@ -89,8 +89,12 @@ const skillTags = {
 
 .skills {
     transition: width 300ms ease-in-out, height 300ms ease-in-out;
-    width: 428px;
+    width: 258px;
     height: 160px;
+
+    @media screen and (min-width: $md) {
+        width: 428px;
+    }
 
     &__home {
         display: flex;
@@ -110,8 +114,12 @@ const skillTags = {
             gap: .5rem;
 
             height: 160px;
-            width: 236px;
+            width: 122px;
             padding-left: 0;
+
+            @media screen and (min-width: $md) {
+                width: 236px;
+            }
         }
     }
 
