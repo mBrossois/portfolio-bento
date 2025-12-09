@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import AppText from '@/components/AppText.vue';
-import type { ProjectTags } from '@/types/Projects';
 import { computed } from 'vue';
 
 defineSlots<{
@@ -9,11 +8,10 @@ defineSlots<{
 
 const props = defineProps<{
     color: 'white' | 'black'
-    variant?: ProjectTags
     size?: 'sm'
 }>()
 
-const tagClasses = computed(() => [props.variant, props.size])
+const tagClasses = computed(() => [props.size])
 </script>
 
 <template>
