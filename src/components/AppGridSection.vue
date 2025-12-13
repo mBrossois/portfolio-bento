@@ -7,7 +7,6 @@ import AppText from '@/components/AppText.vue';
 const props = defineProps<{
     name:string
     expandedSection: string
-    isUnderConstruction?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -31,11 +30,7 @@ function onClose() {
             <button v-if="isExpanded" class="back-button" tabindex="0" aria-label="back button" @click.stop="onClose"><IconBack /></button>
         </div>
         <div class="content custom-scrollbar">
-            <div class="content__under-construction" v-if="isExpanded && isUnderConstruction">
-                <AppText variant="h1">Under construction</AppText>
-                <image-construction-digger />
-            </div>
-            <slot v-else />
+            <slot />
         </div>
     </div>
 </template>

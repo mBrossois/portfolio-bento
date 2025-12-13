@@ -21,12 +21,24 @@ const projectClass = computed(() => ({expanded: props.isExpanded}))
 
 <style lang="scss" scoped>
 .projects {
+    transition: padding 300ms ease-in-out;
+
+    padding: .5rem 1rem;
     display: flex;
     flex-direction: column;
     gap: .5rem;
     width: 100%;
-    padding: .5rem 1rem;
     height: 100%;
+
+    @media screen and (min-width: $md) {
+        padding-top: 1.25rem;
+    }
+
+    @media screen and (min-width: $lg) {
+        padding-top: 3rem;
+        padding-left: 5rem;
+    }
+
 
     &__description {
         transition: opacity 300ms ease-in-out 700ms, height 300ms ease-in-out 300ms, width 300ms ease-in-out 300ms;
@@ -46,7 +58,19 @@ const projectClass = computed(() => ({expanded: props.isExpanded}))
 }
 
 .expanded.projects {
+    transition: padding 300ms ease-in-out 400ms;
+    padding: .5rem 1rem;
+
     .projects {
+        &__title {
+            transition: padding 300ms ease-in-out 400ms;
+            padding-left: 1rem;
+
+            @media screen and (min-width: $md) {
+                padding-left: 3rem;
+            }
+        }
+
         &__description {
             transition: opacity 300ms ease-in-out, height 300ms ease-in-out 200ms, width 300ms ease-in-out 200ms;
             opacity: 0;

@@ -16,7 +16,6 @@ addEventListener('hashchange', () => {
     selectedSection.value = window.location.hash.substring(1)
 })
 
-
 function setSelectedSection(section: string) {
     if(section !== '') {
         window.location.hash = section
@@ -87,7 +86,6 @@ onMounted(() => {
                 lg-grid-row-6-9 lg-grid-col-1-11"
             :name="Section.learningJourney"
             :expanded-section="selectedSection"
-            :is-under-construction="true"
             @set-selected="setSelectedSection"
         >
             <SectionLearning />
