@@ -28,7 +28,7 @@ defineProps<{
     top: 9rem;
 
     &.left {
-        left: 6rem;
+        left: 4rem;
     }
 
     &__poi {

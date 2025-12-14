@@ -14,6 +14,15 @@ const props = defineProps<{
 const learningClass = computed(() => ({
     expanded: props.isExpanded
 }))
+
+const learnings = [
+    {title: 'react', status: status.todo},
+    {title: 'svelte', status: status.todo},
+    {title: 'ai', status: status.todo},
+    {title: 'Micro FE', status: status.inProgress},
+    {title: 'Vue', status: status.done}
+
+    ]
 </script>
 
 <template>
@@ -25,8 +34,7 @@ const learningClass = computed(() => ({
             <ImageLight class="learning__content__light absolute" />
             <ImageCharacter class="learning__content__character absolute" />
             <LearningPoi class="first-poi" :status-poi="status.todo" description="Using canvas to build 2d scenes">Canvas</LearningPoi>
-            <LearningPoiWithRoad title="to the right" side="right" :status-poi="status.todo" />
-            <LearningPoiWithRoad title="to the left" side="left" :status-poi="status.todo" />
+            <LearningPoiWithRoad v-for="(learning, index) in learnings" :key="learning.title" :title="learning.title" :side="index % 2 === 0 ? 'right' : 'left'" :status-poi="learning.status" />
         </div>
     </div>
 </template>

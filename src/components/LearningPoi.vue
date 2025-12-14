@@ -105,7 +105,9 @@ function openDialog() {
         left: 50%;
         background: unset;
         border-color: white;
+        background-color: #242424;
         border-radius: 10px;
+        z-index: 10;
 
         &.right {
             translate: -50%;
