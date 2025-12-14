@@ -4,6 +4,7 @@ import AppText from '@/components/AppText.vue';
 import ImageLight from '@/components/icons/ImageLight.vue';
 import ImageCharacter from '@/components/icons/ImageCharacter.vue';
 import LearningPoi from '@/components/LearningPoi.vue';
+import LearningPoiWithRoad from '@/components/LearningPoiWithRoad.vue';
 import { status } from '@/constants';
 
 const props = defineProps<{
@@ -16,7 +17,7 @@ const learningClass = computed(() => ({
 </script>
 
 <template>
-    <div class="learning" :class="learningClass">
+    <div class="learning relative" :class="learningClass">
         <AppText variant="h1" class="learning__title">Learning journey</AppText>
         <div class="learning__content absolute">
             <div class="learning__content__road absolute" />
@@ -24,6 +25,8 @@ const learningClass = computed(() => ({
             <ImageLight class="learning__content__light absolute" />
             <ImageCharacter class="learning__content__character absolute" />
             <LearningPoi class="first-poi" :status-poi="status.todo" description="Using canvas to build 2d scenes">Canvas</LearningPoi>
+            <LearningPoiWithRoad title="to the right" side="right" :status-poi="status.todo" />
+            <LearningPoiWithRoad title="to the left" side="left" :status-poi="status.todo" />
         </div>
     </div>
 </template>

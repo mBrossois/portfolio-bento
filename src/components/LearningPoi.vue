@@ -10,13 +10,13 @@ defineSlots<{
 
 defineProps<{
     statusPoi: Status
-    description?: string
+    description: string
+    isRightSide?: boolean
 }>()
 
 const dialog = useTemplateRef('dialog');
 
 function openDialog() {
-    console.log('click')
     dialog.value?.show()
 }
 </script>
@@ -29,7 +29,7 @@ function openDialog() {
             </AppText>
         </div>
         <div class="poi__point relative" @click="openDialog" />
-        <dialog ref="dialog" closedby='any' class="poi__dialog">
+        <dialog ref="dialog" closedby='any' class="poi__dialog" :class="{right: isRightSide}">
             <AppText variant="span">{{ description }}</AppText>
         </dialog>
     </div>
@@ -42,8 +42,21 @@ function openDialog() {
     align-items: center;
     gap: 2rem;
 
+    &__title {
+        height: 1.5rem;
+
+        .text {
+            position: absolute;
+            width: 12rem;
+            left: 50%;
+            text-align: center;
+            translate: -50%;
+        }
+    }
+
     &__point {
         transition: background-color 300ms ease-in-out;
+        z-index: 10;
 
         width: 4rem;
         height: 2rem;
@@ -65,7 +78,7 @@ function openDialog() {
             width: 2rem;
             height: 1rem;
             border-radius: 100%;
-            background-color: #000000c7;
+            background-color: #242424;
 
             @media screen and (min-width: $lg) {
                 width: 3.5rem;
@@ -76,7 +89,7 @@ function openDialog() {
         }
 
         &:hover {
-            background-color: var(--background-secondary);
+            background-color: #242424;
 
             &::after {
                 background-color: var(--foreground-secondary);
@@ -93,6 +106,16 @@ function openDialog() {
         background: unset;
         border-color: white;
         border-radius: 10px;
+
+        &.right {
+            translate: -50%;
+            left: -50%;
+
+            &::before {
+                left: unset;
+                right: 2.2rem;
+            }
+        }
 
         &::before {
             content: "";

@@ -43,6 +43,10 @@
   stroke: var(--foreground-primary);
 }
 
+.adjust-stroke-secondary {
+  stroke: var(--foreground-secondary);
+}
+
 .adjust-stroke-inverted {
   stroke: var(--bg-primary);
 }
@@ -77,4 +81,8 @@
 
 ul, ol {
   padding-left: 1rem;
+}
+
+.not-interact {
+  pointer-events: none;
 }
