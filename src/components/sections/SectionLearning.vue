@@ -1,31 +1,58 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import AppText from '@/components/AppText.vue';
 import ImageLight from '@/components/icons/ImageLight.vue';
 import ImageCharacter from '@/components/icons/ImageCharacter.vue';
+import LearningPoi from '@/components/LearningPoi.vue';
+import { status } from '@/constants';
+
+const props = defineProps<{
+    isExpanded: boolean
+}>()
+
+const learningClass = computed(() => ({
+    expanded: props.isExpanded
+}))
 </script>
 
 <template>
-    <div class="learning">
-        <AppText variant="h1" class="grid__title">Learning journey</AppText>
+    <div class="learning" :class="learningClass">
+        <AppText variant="h1" class="learning__title">Learning journey</AppText>
         <div class="learning__content absolute">
             <div class="learning__content__road absolute" />
             <div class="learning__content__poi absolute" />
             <ImageLight class="learning__content__light absolute" />
             <ImageCharacter class="learning__content__character absolute" />
+            <LearningPoi class="first-poi" :status-poi="status.todo" description="Using canvas to build 2d scenes">Canvas</LearningPoi>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.first-poi {
+    left: 4.5rem;
+    top: 3rem;
+}
+
 .learning {
+    transition: padding 300ms ease-in-out;
     width: 100%;
     height: 100%;
 
-    padding-top: 5rem;
-    padding-left: 1rem;
-    text-align: start;
+    padding-top: 1rem;
+    padding-left: 2rem;
 
-    .grid__title {
+    @media screen and (min-width: $md) {
+        padding-top: 2.5rem;
+        padding-left: 3rem;
+    }
+
+    @media screen and (min-width: $lg) {
+        padding-top: 5rem;
+        padding-left: 10rem;
+    }
+
+    &__title {
         width: 6rem;
 
         @media screen and (min-width: $md) {
@@ -138,5 +165,36 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
 
         }
     }
+}
+
+.expanded.learning {
+    transition: padding 300ms ease-in-out 400ms;
+
+    padding-top: 1rem;
+    padding-left: 2rem;
+
+    .learning {
+        &__title {
+            width: 16rem;
+        }
+
+        &__content {
+            top: 8rem;
+
+            &__light {
+                left: 17rem;
+            }
+
+            &__poi {
+                left: 17.375rem;
+            }
+
+            &__road {
+                left: 8.5rem;
+            }
+        }
+
+    }
+
 }
 </style>

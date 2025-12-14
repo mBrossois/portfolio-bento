@@ -7,7 +7,7 @@ import SectionProject from '@/components/sections/SectionProject.vue'
 import SectionExperience from '@/components/sections/SectionExperience.vue'
 import SectionLearning from '@/components/sections/SectionLearning.vue'
 import SectionContact from '@/components/sections/SectionContact.vue'
-import { Section } from '@/constants'
+import { section } from '@/constants'
 import SectionSkills from '@/components/sections/SectionSkills.vue'
 
 const selectedSection = ref(window.location.hash.substring(1))
@@ -40,66 +40,66 @@ onMounted(() => {
             class="grid-row-1-3 grid-col-1-3
                 md-grid-row-1-3 md-grid-col-1-4
                 lg-grid-row-1-4"
-            :name="Section.aboutMe"  
+            :name="section.aboutMe"  
             :expanded-section="selectedSection"
             @set-selected="setSelectedSection"
         >
-            <SectionAboutMe :is-expanded="selectedSection === Section.aboutMe"/>
+            <SectionAboutMe :is-expanded="selectedSection === section.aboutMe"/>
         </AppGridSection>
 
         <AppGridSection 
             class="grid-row-1-3 grid-col-3-6
                 md-gid-row-1-3 md-grid-col-4-8
                 lg-grid-row-1-4 lg-grid-col-4-10"
-            :name="Section.projects" 
+            :name="section.projects" 
             :expanded-section="selectedSection"
             @set-selected="setSelectedSection"   
         >
-            <SectionProject :is-expanded="selectedSection === Section.projects" />
+            <SectionProject :is-expanded="selectedSection === section.projects" />
         </AppGridSection>
         
         <AppGridSection 
             class="grid-row-3-6 grid-col-1-6
                 md-grid-row-3-5 md-grid-col-1-8
                 lg-grid-row-4-6 lg-grid-col-1-10"
-            :name="Section.skillSet"    
+            :name="section.skillSet"    
             :expanded-section="selectedSection"
             @set-selected="setSelectedSection"
         >
-            <SectionSkills :is-expanded="selectedSection === Section.skillSet" />
+            <SectionSkills :is-expanded="selectedSection === section.skillSet" />
         </AppGridSection>
         
         <AppGridSection 
             class="grid-row-6-10 grid-col-1-3
                 md-grid-row-1-5 md-grid-col-8-11
                 lg-grid-row-1-6 lg-grid-col-10-15"
-            :name="Section.experience"
+            :name="section.experience"
             :expanded-section="selectedSection"
             @set-selected="setSelectedSection"
         >
-            <SectionExperience :is-expanded="selectedSection === Section.experience" />
+            <SectionExperience :is-expanded="selectedSection === section.experience" />
         </AppGridSection>
 
         <AppGridSection 
             class="grid-row-6-8 grid-col-3-6
                 md-grid-row-5-7 md-grid-col-1-7
                 lg-grid-row-6-9 lg-grid-col-1-11"
-            :name="Section.learningJourney"
+            :name="section.learningJourney"
             :expanded-section="selectedSection"
             @set-selected="setSelectedSection"
         >
-            <SectionLearning />
+            <SectionLearning :is-expanded="selectedSection === section.learningJourney"/>
         </AppGridSection>
 
         <AppGridSection 
             class="grid__section grid-row-8-10 grid-col-3-6
                 md-grid-row-5-7 md-grid-col-7-11
                 lg-grid-row-6-9 lg-grid-col-11-15"
-            :name="Section.contactMe"
+            :name="section.contactMe"
             :expanded-section="selectedSection"  
             @set-selected="setSelectedSection"
         >
-            <SectionContact :is-expanded="selectedSection === Section.contactMe"/>
+            <SectionContact :is-expanded="selectedSection === section.contactMe"/>
         </AppGridSection>
     </div>
 </template>
