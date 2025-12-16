@@ -16,13 +16,16 @@ const learningClass = computed(() => ({
 }))
 
 const learnings = [
-    {title: 'react', status: status.todo},
-    {title: 'svelte', status: status.todo},
-    {title: 'ai', status: status.todo},
-    {title: 'canvas', status: status.inProgress},
+    {title: 'react', status: status.todo, description: 'Building a React app, to learn how React works.'},
+    {title: 'svelte', status: status.todo, description: 'Building a Svelte app, to learn how Svelte works.'},
+    {title: 'ai', status: status.todo, description: 'Setting up a dockerized Claude code, with a Open Source AI model and self build MCP server.'},
+    {title: 'canvas', status: status.inProgress, description: 'Building games with Canvas, to learn more about math and OOP programming.'},
     {title: 'Micro FE', status: status.inProgress, description: 'Reading "Building Micro-Frontends" from Luca Mezzalira'},
     {title: 'Vue', status: status.done}
-    ]
+]
+
+const activeLearning = [...learnings].reverse().findIndex(learning => learning.status === status.inProgress)
+console.log(learnings.length - 1 - activeLearning)
 </script>
 
 <template>
@@ -33,13 +36,13 @@ const learnings = [
             <div class="learning__content__poi absolute" />
             <ImageLight class="learning__content__light absolute" />
             <ImageCharacter class="learning__content__character absolute" />
-            <LearningPoi class="first-poi" :status-poi="status.todo" description="Using canvas to build 2d scenes">Canvas</LearningPoi>
             <LearningPoiWithRoad 
                 v-for="(learning, index) in learnings" 
                 :key="learning.title" 
                 class="learning__content__extra-learnings" 
+                :has-road="index !== 0"
                 :title="learning.title" 
-                :side="index % 2 === 0 ? 'right' : 'left'" 
+                :side="index % 2 === 1 ? 'right' : 'left'" 
                 :status-poi="learning.status"  
                 :description="learning.description"
                 />

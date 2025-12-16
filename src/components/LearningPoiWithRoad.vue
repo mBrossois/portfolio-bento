@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, ref, onMounted } from 'vue';
+import { watch, onMounted, shallowRef } from 'vue';
 import { useWindowSize } from '@vueuse/core'
 
 import { status } from '@/constants'
@@ -15,10 +15,11 @@ defineProps<{
     title: string
     side: 'left' | 'right'
     statusPoi: Status
+    hasRoad: boolean
     description?: string
 }>()
 
-const roadComponent = ref(IconRoadSm)
+const roadComponent = shallowRef(IconRoadSm)
 
 const { width } = useWindowSize()
 watch(width, (newValue) => {
@@ -47,9 +48,9 @@ onMounted(() => {
 
 <template>
     <div class="learning-section relative" :class="side">
-        <component :is="roadComponent" v-if="side === 'right'" class="learning-section__road-left relative" />
+        <component :is="roadComponent" v-if="side === 'right' && hasRoad" class="learning-section__road-left relative" />
         <LearningPoi class="learning-section__poi" :class="side" :status-poi="statusPoi" :description="description" :is-right-side="side === 'right'">{{ title }}</LearningPoi>
-        <component :is="roadComponent" v-if="side === 'left'" class="learning-section__road-right relative" />
+        <component :is="roadComponent" v-if="side === 'left' && hasRoad" class="learning-section__road-right relative" />
     </div>
 </template>
 
@@ -58,17 +59,17 @@ onMounted(() => {
     width: 17rem;
     height: 14rem;
     position: relative;
-    top: 9rem;
+    top: -4rem;
 
     &.left {
-        left: 4rem;
+        left: 5rem;
     }
 
     &__poi {
         top: 7rem;
 
         &.right {
-            left: 12rem;
+            left: 11rem;
 
             @media screen and (min-width: $md) {
                 left: 30rem;
@@ -83,7 +84,7 @@ onMounted(() => {
     &__road {
         &-left {
             top: -1.75rem;
-            left: 2.1rem;
+            left: 2.8rem;
         }
 
         &-right {

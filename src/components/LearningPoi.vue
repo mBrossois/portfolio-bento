@@ -10,7 +10,7 @@ defineSlots<{
 
 defineProps<{
     statusPoi: Status
-    description: string
+    description?: string
     isRightSide?: boolean
 }>()
 
@@ -83,7 +83,7 @@ function openDialog() {
             width: 2rem;
             height: 1rem;
             border-radius: 100%;
-            background-color: #242424;
+            background-color: var(--dialog-bg);
 
             @media screen and (min-width: $lg) {
                 width: 3.5rem;
@@ -94,7 +94,7 @@ function openDialog() {
         }
 
         &:hover {
-            background-color: #242424;
+            background-color: var(--dialog-bg);
 
             &::after {
                 background-color: var(--foreground-secondary);
@@ -110,7 +110,7 @@ function openDialog() {
         left: 50%;
         background: unset;
         border-color: white;
-        background-color: #242424;
+        background-color: var(--dialog-bg);
         border-radius: 10px;
         z-index: 10;
 
