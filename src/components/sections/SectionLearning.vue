@@ -71,6 +71,7 @@ const learnings = [
     }
 
     &__content {
+        transition: top 300ms ease-in-out;
         top: 0;
         left: 0;
 
@@ -86,6 +87,7 @@ const learnings = [
         }
 
         &__light {
+            transition: left 300ms ease-in-out, top 300ms ease-in-out;
             width: 44px;
             height: 75px;
 
@@ -104,7 +106,7 @@ const learnings = [
         }
 
         &__poi {
-            transition: background-color 300ms ease-in-out;
+            transition: background-color 300ms ease-in-out, left 300ms ease-in-out, top 300ms ease-in-out;
 
             width: 2rem;
             height: 1rem;
@@ -146,7 +148,7 @@ const learnings = [
         }
 
         &__road {
-            transition: border-bottom 300ms ease-in-out, border-right 300ms ease-in-out;
+            transition: border-bottom 300ms ease-in-out, border-right 300ms ease-in-out, left 300ms ease-in-out, width 300ms ease-in-out, top 300ms ease-in-out;
             top: 6rem;
             left: .5rem;
             width: 10rem;
@@ -199,6 +201,7 @@ const learnings = [
         }
 
         &__content {
+            transition: top 300ms ease-in-out 400ms;
             top: 8rem;
 
             .first-poi {
@@ -207,14 +210,17 @@ const learnings = [
             }
 
             &__light {
+                transition: left 300ms ease-in-out 400ms, top 300ms ease-in-out 400ms;
                 left: 17rem;
             }
 
             &__poi {
+                transition: left 300ms ease-in-out 400ms, top 300ms ease-in-out 400ms;
                 left: 17.375rem;
             }
 
             &__road {
+                transition: left 300ms ease-in-out 400ms, width 300ms ease-in-out 400ms, top 300ms ease-in-out 400ms;
                 left: 8.5rem;
             }
 
