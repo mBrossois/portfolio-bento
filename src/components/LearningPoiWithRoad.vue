@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { watch, ref, onMounted } from 'vue';
+import { useWindowSize } from '@vueuse/core'
+
 import { status } from '@/constants'
+
 import LearningPoi from '@/components/LearningPoi.vue'
-import IconRoad from './icons/IconRoad.vue';
+import IconRoadSm from '@/components/icons/IconRoadSm.vue';
+import IconRoadMd from '@/components/icons/IconRoadMd.vue';
+import IconRoadLg from '@/components/icons/IconRoadLg.vue';
 
 type Status = typeof status[keyof typeof status]
 
@@ -10,13 +16,40 @@ defineProps<{
     side: 'left' | 'right'
     statusPoi: Status
 }>()
+
+const roadComponent = ref(IconRoadSm)
+
+const { width } = useWindowSize()
+watch(width, (newValue) => {
+    setRoadComponent(newValue)
+})
+
+function setRoadComponent(width: number) {
+    if(width < 768) {
+        roadComponent.value = IconRoadSm
+        return;
+    }
+    if(width >= 768 && width < 1024) {
+        roadComponent.value = IconRoadMd
+        return;
+    }
+    if(width >= 1024) {
+        console.log('lg')
+        roadComponent.value = IconRoadLg
+        return;
+    }
+}
+
+onMounted(() => {
+    setRoadComponent(width.value)
+})
 </script>
 
 <template>
     <div class="learning-section relative" :class="side">
-        <IconRoad v-if="side === 'right'" class="learning-section__road-left relative" />
+        <component :is="roadComponent" v-if="side === 'right'" class="learning-section__road-left relative" />
         <LearningPoi class="learning-section__poi" :class="side" :status-poi="statusPoi" description="Using canvas to build 2d scenes" :is-right-side="side === 'right'">{{ title }}</LearningPoi>
-        <IconRoad v-if="side === 'left'" class="learning-section__road-right relative" />
+        <component :is="roadComponent" v-if="side === 'left'" class="learning-section__road-right relative" />
     </div>
 </template>
 
@@ -36,6 +69,14 @@ defineProps<{
 
         &.right {
             left: 12rem;
+
+            @media screen and (min-width: $md) {
+                left: 30rem;
+            }
+
+            @media screen and (min-width: $lg) {
+                left: 43rem;
+            }
         }
     }
 

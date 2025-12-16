@@ -34,17 +34,12 @@ const learnings = [
             <ImageLight class="learning__content__light absolute" />
             <ImageCharacter class="learning__content__character absolute" />
             <LearningPoi class="first-poi" :status-poi="status.todo" description="Using canvas to build 2d scenes">Canvas</LearningPoi>
-            <LearningPoiWithRoad v-for="(learning, index) in learnings" :key="learning.title" :title="learning.title" :side="index % 2 === 0 ? 'right' : 'left'" :status-poi="learning.status" />
+            <LearningPoiWithRoad v-for="(learning, index) in learnings" :key="learning.title" class="learning__content__extra-learnings" :title="learning.title" :side="index % 2 === 0 ? 'right' : 'left'" :status-poi="learning.status" />
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.first-poi {
-    left: 4.5rem;
-    top: 3rem;
-}
-
 .learning {
     transition: padding 300ms ease-in-out;
     width: 100%;
@@ -78,6 +73,17 @@ const learnings = [
     &__content {
         top: 0;
         left: 0;
+
+        .first-poi {
+            transition: opacity 300ms ease-in-out;
+            opacity: 0;
+            left: 4.5rem;
+            top: 3rem;
+
+            @media screen and (min-width: $lg) {
+                top: 2rem;
+            }
+        }
 
         &__light {
             width: 44px;
@@ -173,7 +179,10 @@ const learnings = [
                 height: 30px;
                 top: 9.5rem;
             }
-
+        }
+        &__extra-learnings {
+            transition: opacity 300ms ease-in-out;
+            opacity: 0;
         }
     }
 }
@@ -192,6 +201,11 @@ const learnings = [
         &__content {
             top: 8rem;
 
+            .first-poi {
+                transition: opacity 300ms ease-in-out 400ms;
+                opacity: 1;
+            }
+
             &__light {
                 left: 17rem;
             }
@@ -202,6 +216,46 @@ const learnings = [
 
             &__road {
                 left: 8.5rem;
+            }
+
+            &__extra-learnings {
+                transition: opacity 300ms ease-in-out 400ms;
+                opacity: 1;
+
+                &:last-child {
+                    height: 17rem;
+                }
+            }
+
+            @media screen and (min-width: $md) {
+                &__light {
+                    left: 37rem;
+                }
+
+                &__poi {
+                    left: 37.375rem;
+                }
+
+                &__road {
+                    width: 30rem;
+                }
+            }
+
+            @media screen and (min-width: $lg) {
+                &__light {
+                    left: 53rem;
+                    top: -5.5rem;
+                }
+
+                &__poi {
+                    left: 53.8rem;
+                    top: 5.25rem;
+                }
+
+                &__road {
+                    top: 6rem;
+                    width: 48rem;
+                }
             }
         }
 

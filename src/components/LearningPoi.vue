@@ -109,9 +109,17 @@ function openDialog() {
         border-radius: 10px;
         z-index: 10;
 
+        @media screen and (min-width: $lg) {
+            top: 8rem;
+        }
+
         &.right {
             translate: -50%;
             left: -50%;
+
+            @media screen and (min-width: $lg) {
+                translate: -22%;
+            }
 
             &::before {
                 left: unset;
