@@ -30,7 +30,12 @@ function openDialog() {
         </div>
         <div class="poi__point relative" @click="openDialog" />
         <dialog ref="dialog" closedby='any' class="poi__dialog" :class="{right: isRightSide}">
-            <AppText variant="span">{{ description }}</AppText>
+            <AppText variant="span">
+                {{ description }} <br />
+                Status: {{ statusPoi }}
+
+
+            </AppText>
         </dialog>
     </div>
 </template>
@@ -109,7 +114,12 @@ function openDialog() {
         border-radius: 10px;
         z-index: 10;
 
+        @media screen and (min-width: $md) {            
+            width: 25rem;
+        }
+
         @media screen and (min-width: $lg) {
+            width: 30rem;
             top: 8rem;
         }
 
@@ -117,8 +127,12 @@ function openDialog() {
             translate: -50%;
             left: -50%;
 
+            @media screen and (min-width: $md) {
+                translate: -72%;
+            }
+
             @media screen and (min-width: $lg) {
-                translate: -22%;
+                translate: -64%;
             }
 
             &::before {

@@ -15,6 +15,7 @@ defineProps<{
     title: string
     side: 'left' | 'right'
     statusPoi: Status
+    description?: string
 }>()
 
 const roadComponent = ref(IconRoadSm)
@@ -34,7 +35,6 @@ function setRoadComponent(width: number) {
         return;
     }
     if(width >= 1024) {
-        console.log('lg')
         roadComponent.value = IconRoadLg
         return;
     }
@@ -48,7 +48,7 @@ onMounted(() => {
 <template>
     <div class="learning-section relative" :class="side">
         <component :is="roadComponent" v-if="side === 'right'" class="learning-section__road-left relative" />
-        <LearningPoi class="learning-section__poi" :class="side" :status-poi="statusPoi" description="Using canvas to build 2d scenes" :is-right-side="side === 'right'">{{ title }}</LearningPoi>
+        <LearningPoi class="learning-section__poi" :class="side" :status-poi="statusPoi" :description="description" :is-right-side="side === 'right'">{{ title }}</LearningPoi>
         <component :is="roadComponent" v-if="side === 'left'" class="learning-section__road-right relative" />
     </div>
 </template>

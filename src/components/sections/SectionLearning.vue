@@ -19,9 +19,9 @@ const learnings = [
     {title: 'react', status: status.todo},
     {title: 'svelte', status: status.todo},
     {title: 'ai', status: status.todo},
-    {title: 'Micro FE', status: status.inProgress},
+    {title: 'canvas', status: status.inProgress},
+    {title: 'Micro FE', status: status.inProgress, description: 'Reading "Building Micro-Frontends" from Luca Mezzalira'},
     {title: 'Vue', status: status.done}
-
     ]
 </script>
 
@@ -34,7 +34,15 @@ const learnings = [
             <ImageLight class="learning__content__light absolute" />
             <ImageCharacter class="learning__content__character absolute" />
             <LearningPoi class="first-poi" :status-poi="status.todo" description="Using canvas to build 2d scenes">Canvas</LearningPoi>
-            <LearningPoiWithRoad v-for="(learning, index) in learnings" :key="learning.title" class="learning__content__extra-learnings" :title="learning.title" :side="index % 2 === 0 ? 'right' : 'left'" :status-poi="learning.status" />
+            <LearningPoiWithRoad 
+                v-for="(learning, index) in learnings" 
+                :key="learning.title" 
+                class="learning__content__extra-learnings" 
+                :title="learning.title" 
+                :side="index % 2 === 0 ? 'right' : 'left'" 
+                :status-poi="learning.status"  
+                :description="learning.description"
+                />
         </div>
     </div>
 </template>
@@ -264,8 +272,6 @@ const learnings = [
                 }
             }
         }
-
     }
-
 }
 </style>
