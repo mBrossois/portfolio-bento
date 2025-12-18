@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import AppText from '@/components/AppText.vue';
 import ImageLight from '@/components/icons/ImageLight.vue';
 import ImageCharacter from '@/components/icons/ImageCharacter.vue';
-import LearningPoi from '@/components/LearningPoi.vue';
 import LearningPoiWithRoad from '@/components/LearningPoiWithRoad.vue';
 import { status } from '@/constants';
 
@@ -25,7 +24,8 @@ const learnings = [
 ]
 
 const activeLearning = [...learnings].reverse().findIndex(learning => learning.status === status.inProgress)
-console.log(learnings.length - 1 - activeLearning)
+// const posCharacter = learnings.length - 1 - activeLearning
+const posCharacter = 3
 </script>
 
 <template>
@@ -35,7 +35,7 @@ console.log(learnings.length - 1 - activeLearning)
             <div class="learning__content__road absolute" />
             <div class="learning__content__poi absolute" />
             <ImageLight class="learning__content__light absolute" />
-            <ImageCharacter class="learning__content__character absolute" />
+            <ImageCharacter :style="{'--pos': posCharacter}" class="learning__content__character absolute" />
             <LearningPoiWithRoad 
                 v-for="(learning, index) in learnings" 
                 :key="learning.title" 
@@ -181,6 +181,7 @@ console.log(learnings.length - 1 - activeLearning)
         }
 
         &__character {
+            transition: top 300ms ease-in-out, left 300ms ease-in-out;
             width: 10.5px;
             height: 22.5px;
 
@@ -235,6 +236,15 @@ console.log(learnings.length - 1 - activeLearning)
                 left: 8.5rem;
             }
 
+            &__character {
+                --distance-x: 6rem;
+                --start-y: 4.8rem;
+                
+                transition: top 300ms linear 400ms, left 300ms linear 400ms;
+                top: calc(var(--start-y) + (14rem * var(--pos)));
+                left: calc(6.5rem + (var(--distance-x) * mod(var(--pos), 2)));
+            }
+
             &__extra-learnings {
                 transition: opacity 300ms ease-in-out 400ms;
                 opacity: 1;
@@ -256,6 +266,10 @@ console.log(learnings.length - 1 - activeLearning)
                 &__road {
                     width: 30rem;
                 }
+
+                 &__character {
+                    --distance-x: 25rem;
+                 }
             }
 
             @media screen and (min-width: $lg) {
@@ -272,6 +286,12 @@ console.log(learnings.length - 1 - activeLearning)
                 &__road {
                     top: 6rem;
                     width: 48rem;
+                }
+
+                &__character {
+                    --start-y: 4.4rem;
+                    --distance-x: 38rem;
+                    left: calc(8.5rem + (var(--distance-x) * mod(var(--pos), 2)));
                 }
             }
         }
