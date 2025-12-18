@@ -68,6 +68,7 @@ function openDialog() {
         border-radius: 100%;
         background-color: var(--foreground-secondary);
         outline: 2px solid var(--foreground-secondary);
+        cursor: pointer;
 
         @media screen and (min-width: $lg) {
             width: 8rem;
