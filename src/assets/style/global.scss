@@ -18,6 +18,8 @@
     --foreground-primary: #000;
     --foreground-secondary: #504F4F;
 
+    --dialog-bg: #dbdbdb;
+
     --bg-primary-rgb: 255, 255, 255;
     --foreground-primary-rgb: 0, 0, 0;
 }
@@ -27,6 +29,8 @@
   --bg-secondary: #229e6b;
   --foreground-primary: #fff;
   --foreground-secondary: #d8d8d8;
+  
+  --dialog-bg: #242424;
 
   --bg-primary-rgb: 0, 0, 0;
   --foreground-primary-rgb: 255, 255, 255;
@@ -41,6 +45,10 @@
 
 .adjust-stroke {
   stroke: var(--foreground-primary);
+}
+
+.adjust-stroke-secondary {
+  stroke: var(--foreground-secondary);
 }
 
 .adjust-stroke-inverted {
@@ -77,4 +85,8 @@
 
 ul, ol {
   padding-left: 1rem;
+}
+
+.not-interact {
+  pointer-events: none;
 }

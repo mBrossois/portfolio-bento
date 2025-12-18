@@ -96,10 +96,14 @@ const techStacks = {
 
 <style scoped lang="scss">
 .work {
-    transition: width 300ms ease-in-out;
+    transition: width 300ms ease-in-out, padding 300ms ease-in-out;
     height: 100%;
     width: 152px;
     padding: 1rem;
+
+    @media screen and (min-width: $lg) {
+        padding: 0;
+    }
 
     &__title {
         align-self: start;
@@ -145,8 +149,9 @@ const techStacks = {
 }
 
 .expanded.work {
-    transition: width 500ms ease-in-out 400ms;
+    transition: width 500ms ease-in-out 400ms, padding 500ms ease-in-out 400ms;
     width: 330px;
+    padding: 1rem;
 
     @media screen and (min-width: $md) {
         width: 680px;

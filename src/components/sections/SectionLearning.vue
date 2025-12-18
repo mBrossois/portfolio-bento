@@ -1,29 +1,74 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import AppText from '@/components/AppText.vue';
 import ImageLight from '@/components/icons/ImageLight.vue';
 import ImageCharacter from '@/components/icons/ImageCharacter.vue';
+import LearningPoiWithRoad from '@/components/LearningPoiWithRoad.vue';
+import { status } from '@/constants';
+
+const props = defineProps<{
+    isExpanded: boolean
+}>()
+
+const learningClass = computed(() => ({
+    expanded: props.isExpanded
+}))
+
+const learnings = [
+    {title: 'react', status: status.todo, description: 'Building a React app, to learn how React works.'},
+    {title: 'svelte', status: status.todo, description: 'Building a Svelte app, to learn how Svelte works.'},
+    {title: 'ai', status: status.todo, description: 'Setting up a dockerized Claude code, with a Open Source AI model and self build MCP server.'},
+    {title: 'canvas', status: status.inProgress, description: 'Building games with Canvas, to learn more about math and OOP programming.'},
+    {title: 'Micro FE', status: status.inProgress, description: 'Reading "Building Micro-Frontends" from Luca Mezzalira'},
+    {title: 'Vue', status: status.done}
+]
+
+const activeLearning = [...learnings].reverse().findIndex(learning => learning.status === status.inProgress)
+const posCharacter = learnings.length - 1 - activeLearning
 </script>
 
 <template>
-    <div class="learning">
-        <AppText variant="h1" class="grid__title">Learning journey</AppText>
+    <div class="learning relative" :class="learningClass">
+        <AppText variant="h1" class="learning__title">Learning journey</AppText>
         <div class="learning__content absolute">
             <div class="learning__content__road absolute" />
             <div class="learning__content__poi absolute" />
             <ImageLight class="learning__content__light absolute" />
-            <ImageCharacter class="learning__content__character absolute" />
+            <ImageCharacter :style="{'--pos': posCharacter}" class="learning__content__character absolute" />
+            <LearningPoiWithRoad 
+                v-for="(learning, index) in learnings" 
+                :key="learning.title" 
+                class="learning__content__extra-learnings" 
+                :has-road="index !== 0"
+                :title="learning.title" 
+                :side="index % 2 === 1 ? 'right' : 'left'" 
+                :status-poi="learning.status"  
+                :description="learning.description"
+                />
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .learning {
-    display: flex;
+    transition: padding 300ms ease-in-out;
     width: 100%;
-    padding-left: 1rem;
-    text-align: start;
+    height: 100%;
 
-    .grid__title {
+    padding-top: 1rem;
+    padding-left: 2rem;
+
+    @media screen and (min-width: $md) {
+        padding-top: 2.5rem;
+        padding-left: 3rem;
+    }
+
+    @media screen and (min-width: $lg) {
+        padding-top: 5rem;
+        padding-left: 10rem;
+    }
+
+    &__title {
         width: 6rem;
 
         @media screen and (min-width: $md) {
@@ -36,10 +81,23 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
     }
 
     &__content {
+        transition: top 300ms ease-in-out;
         top: 0;
         left: 0;
 
+        .first-poi {
+            transition: opacity 300ms ease-in-out;
+            opacity: 0;
+            left: 4.5rem;
+            top: 3rem;
+
+            @media screen and (min-width: $lg) {
+                top: 2rem;
+            }
+        }
+
         &__light {
+            transition: left 300ms ease-in-out, top 300ms ease-in-out;
             width: 44px;
             height: 75px;
 
@@ -58,7 +116,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
         }
 
         &__poi {
-            transition: background-color 300ms ease-in-out;
+            transition: background-color 300ms ease-in-out, left 300ms ease-in-out, top 300ms ease-in-out;
 
             width: 2rem;
             height: 1rem;
@@ -100,7 +158,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
         }
 
         &__road {
-            transition: border-bottom 300ms ease-in-out, border-right 300ms ease-in-out;
+            transition: border-bottom 300ms ease-in-out, border-right 300ms ease-in-out, left 300ms ease-in-out, width 300ms ease-in-out, top 300ms ease-in-out;
             top: 6rem;
             left: .5rem;
             width: 10rem;
@@ -122,6 +180,7 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
         }
 
         &__character {
+            transition: top 300ms ease-in-out, left 300ms ease-in-out;
             width: 10.5px;
             height: 22.5px;
 
@@ -133,7 +192,107 @@ import ImageCharacter from '@/components/icons/ImageCharacter.vue';
                 height: 30px;
                 top: 9.5rem;
             }
+        }
+        &__extra-learnings {
+            transition: opacity 300ms ease-in-out;
+            opacity: 0;
+        }
+    }
+}
 
+.expanded.learning {
+    transition: padding 300ms ease-in-out 400ms;
+
+    padding-top: 1rem;
+    padding-left: 2rem;
+
+    .learning {
+        &__title {
+            width: 16rem;
+        }
+
+        &__content {
+            transition: top 300ms ease-in-out 400ms;
+            top: 8rem;
+
+            .first-poi {
+                transition: opacity 300ms ease-in-out 400ms;
+                opacity: 1;
+            }
+
+            &__light {
+                transition: left 300ms ease-in-out 400ms, top 300ms ease-in-out 400ms;
+                left: 17rem;
+            }
+
+            &__poi {
+                transition: left 300ms ease-in-out 400ms, top 300ms ease-in-out 400ms;
+                left: 17.375rem;
+            }
+
+            &__road {
+                transition: left 300ms ease-in-out 400ms, width 300ms ease-in-out 400ms, top 300ms ease-in-out 400ms;
+                left: 8.5rem;
+            }
+
+            &__character {
+                --distance-x: 6rem;
+                --start-y: 4.8rem;
+                
+                transition: top 300ms linear 400ms, left 300ms linear 400ms;
+                top: calc(var(--start-y) + (14rem * var(--pos)));
+                left: calc(6.5rem + (var(--distance-x) * mod(var(--pos), 2)));
+            }
+
+            &__extra-learnings {
+                transition: opacity 300ms ease-in-out 400ms;
+                opacity: 1;
+
+                &:last-child {
+                    height: 17rem;
+                }
+            }
+
+            @media screen and (min-width: $md) {
+                &__light {
+                    left: 37rem;
+                }
+
+                &__poi {
+                    left: 37.375rem;
+                }
+
+                &__road {
+                    width: 30rem;
+                }
+
+                 &__character {
+                    --distance-x: 25rem;
+                 }
+            }
+
+            @media screen and (min-width: $lg) {
+                &__light {
+                    left: 53rem;
+                    top: -5.5rem;
+                }
+
+                &__poi {
+                    left: 53.8rem;
+                    top: 5.25rem;
+                }
+
+                &__road {
+                    top: 6rem;
+                    width: 48rem;
+                }
+
+                &__character {
+                    --start-y: 4.4rem;
+                    --distance-x: 38rem;
+                    left: calc(8.5rem + (var(--distance-x) * mod(var(--pos), 2)));
+                }
+            }
         }
     }
 }
