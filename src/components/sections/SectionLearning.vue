@@ -24,8 +24,7 @@ const learnings = [
 ]
 
 const activeLearning = [...learnings].reverse().findIndex(learning => learning.status === status.inProgress)
-// const posCharacter = learnings.length - 1 - activeLearning
-const posCharacter = 3
+const posCharacter = learnings.length - 1 - activeLearning
 </script>
 
 <template>
