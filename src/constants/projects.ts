@@ -40,15 +40,15 @@ export const projects: Array<ProjectDetails> = [
         tagColor: 'black'
     },
     {
-        name: 'Birds on mousemove',
-        description: 'A simple JS application that will draw flying birds on the screen when you move your mouse.',
+        name: 'Layton puzzle',
+        description: 'A vue based game, build for my gf her birthday.',
         status: 'Done',
-        image: '/bird.png',
+        image: '/layton-puzzle.png',
         links: {
-            code: 'https://github.com/mBrossois/birds-on-mouse',
+            code: 'https://github.com/mBrossois/layton-puzzle',
             website: 'https://layton-bday-puzzle.netlify.app/'
         },
-        tags: ['html', 'css', 'js'],
+        tags: ['vue', 'html', 'css', 'js', 'vite'],
         tagColor: 'white'
     },
         {
